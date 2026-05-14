@@ -1,0 +1,112 @@
+.toolbar {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--iiw-surface-panel-border);
+  background: var(--iiw-surface-panel);
+}
+
+.searchWrap {
+  display: block;
+  margin-bottom: 0.85rem;
+}
+
+.searchInput {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-input-border);
+  background: var(--iiw-input-bg);
+  color: var(--iiw-input-fg);
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.searchInput::placeholder {
+  color: var(--iiw-text-muted);
+}
+
+.filtersRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.75rem 1rem;
+}
+
+.filterLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--iiw-text-label);
+  min-width: min(100%, 11rem);
+}
+
+.select {
+  padding: 0.45rem 0.65rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-input-border);
+  background: var(--iiw-input-bg);
+  color: var(--iiw-input-fg);
+  font: inherit;
+  font-size: 0.88rem;
+  min-width: 10rem;
+}
+
+.clearBtn {
+  align-self: center;
+  margin-top: 1.1rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-border);
+  background: transparent;
+  color: var(--iiw-text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.clearBtn:hover {
+  border-color: var(--iiw-blue);
+  color: var(--iiw-blue);
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.filterEmpty {
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.5rem;
+  background: var(--iiw-accent-soft);
+  color: var(--iiw-text-muted);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 640px) {
+  .filterLabel {
+    min-width: 100%;
+  }
+
+  .select {
+    width: 100%;
+  }
+
+  .clearBtn {
+    margin-top: 0;
+    width: 100%;
+  }
+}

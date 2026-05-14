@@ -1,0 +1,29 @@
+.page {
+  max-width: 1200px;
+}
+
+.lead {
+  margin: 0.35rem 0 0;
+  color: var(--iiw-text-lead);
+  font-size: 0.9rem;
+  font-weight: 500;
+  max-width: 42rem;
+}
+
+.loader {
+  display: grid;
+  place-items: center;
+  min-height: 240px;
+}
+
+.error {
+  color: var(--iiw-error-text);
+  margin: 0 0 1rem;
+}
+
+.empty {
+  padding: 1.25rem 1rem !important;
+  text-align: center;
+  color: var(--iiw-text-muted);
+  font-size: 0.88rem;
+}

@@ -1,0 +1,60 @@
+{
+  "name": "interpret-hub",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n api,web -c cyan,magenta \"pnpm exec tsx watch src/index.ts\" \"node scripts/wait-for-api.mjs && pnpm --filter @interpret-hub/client dev\"",
+    "dev:api": "pnpm exec tsx watch src/index.ts",
+    "dev:web": "pnpm --filter @interpret-hub/client dev",
+    "build": "pnpm run build:shared && pnpm run build:api && pnpm run build:web",
+    "build:shared": "pnpm --filter @interpret-hub/shared build",
+    "build:api": "node scripts/prisma-generate.mjs && pnpm exec tsc -p tsconfig.json",
+    "build:web": "pnpm --filter @interpret-hub/client build",
+    "start": "node dist/index.js",
+    "typecheck": "pnpm exec tsc -p tsconfig.json --noEmit && pnpm --filter @interpret-hub/client typecheck",
+    "db:generate": "node scripts/prisma-generate.mjs",
+    "db:generate:clean": "node scripts/prisma-generate.mjs --clean",
+    "db:deploy": "pnpm exec prisma migrate deploy && node scripts/prisma-generate.mjs",
+    "db:migrate": "pnpm exec prisma migrate dev",
+    "db:push": "pnpm exec prisma db push",
+    "db:seed": "pnpm exec prisma db seed",
+    "bootstrap:super-admins": "pnpm exec tsx scripts/bootstrap-production-super-admins.ts",
+    "email:test": "pnpm exec tsx scripts/send-test-email.ts"
+  },
+  "dependencies": {
+    "@interpret-hub/shared": "workspace:*",
+    "@prisma/client": "^6.19.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.5.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "juice": "^11.0.3",
+    "multer": "^2.1.1",
+    "nodemailer": "^8.0.7",
+    "socket.io": "^4.8.3",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^2.1.0",
+    "@types/node": "^25.3.3",
+    "@types/nodemailer": "^8.0.0",
+    "concurrently": "^9.2.1",
+    "prisma": "^6.19.0",
+    "tsx": "^4.21.0",
+    "typescript": "~5.9.2",
+    "wait-on": "^9.0.6"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "imports": {
+    "#prisma-client": "./generated/prisma/index.js"
+  }
+}

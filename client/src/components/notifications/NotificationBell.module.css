@@ -1,0 +1,130 @@
+.wrap {
+  position: relative;
+  z-index: 50;
+}
+
+.bell {
+  position: relative;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-border);
+  background: var(--iiw-surface-elevated);
+  color: var(--iiw-text-primary);
+  font-size: 1rem;
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 1.1rem;
+  height: 1.1rem;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  width: min(360px, calc(100vw - 1.5rem));
+  max-height: min(420px, calc(100dvh - 5.5rem));
+  overflow: auto;
+  border-radius: 0.75rem;
+  border: 1px solid var(--iiw-border);
+  background: var(--iiw-bg-sidebar);
+  color: var(--iiw-text-primary);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  z-index: 100;
+}
+
+:root[data-theme="dark"] .dropdown {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--iiw-border);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.linkBtn {
+  border: none;
+  background: none;
+  color: var(--iiw-blue);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.itemBtn {
+  width: 100%;
+  text-align: left;
+  padding: 0.65rem 0.85rem;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.unread .itemBtn {
+  background: var(--iiw-accent-soft);
+}
+
+.msg {
+  font-size: 0.85rem;
+}
+
+.time {
+  font-size: 0.7rem;
+  color: var(--iiw-text-muted);
+}
+
+.empty {
+  padding: 1rem;
+  color: var(--iiw-text-muted);
+  font-size: 0.85rem;
+  word-break: break-word;
+}
+
+@media (max-width: 640px) {
+  .dropdown {
+    position: fixed;
+    left: max(0.65rem, env(safe-area-inset-left, 0px));
+    right: max(0.65rem, env(safe-area-inset-right, 0px));
+    top: max(4.25rem, calc(env(safe-area-inset-top, 0px) + 3.5rem));
+    width: auto;
+    max-height: min(70dvh, calc(100dvh - 5rem));
+    z-index: 3000;
+  }
+
+  .itemBtn {
+    min-height: 2.75rem;
+  }
+
+  .msg {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+}

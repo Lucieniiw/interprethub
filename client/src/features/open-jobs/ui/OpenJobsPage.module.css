@@ -1,0 +1,130 @@
+.page {
+  max-width: 1400px;
+}
+
+.header {
+  margin-bottom: 1.25rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.65rem;
+  font-weight: 700;
+}
+
+.lead {
+  margin: 0.35rem 0 0;
+  color: var(--iiw-text-lead);
+  font-size: 0.95rem;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.card {
+  border-radius: 1rem;
+  border: 1px solid var(--iiw-calendar-shell-border);
+  background: var(--iiw-surface-panel);
+  overflow: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.table th,
+.table td {
+  padding: 0.55rem 0.85rem;
+  text-align: left;
+  border-bottom: 1px solid var(--iiw-divider-soft);
+}
+
+.table th {
+  color: var(--iiw-text-lead);
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.detailLink {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--iiw-blue);
+  text-decoration: none;
+  margin-right: 0.25rem;
+}
+
+.detailLink:hover {
+  text-decoration: underline;
+}
+
+.claim {
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.45rem;
+  border: none;
+  background: var(--iiw-nav-active-bg);
+  color: var(--iiw-nav-active-color);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+:root[data-theme="light"] .claim {
+  background: var(--iiw-blue);
+  color: #fff;
+}
+
+.decline {
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.45rem;
+  border: 1px solid var(--iiw-cancel-border);
+  background: transparent;
+  color: var(--iiw-cancel-text);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.bannerError {
+  color: var(--iiw-error-text);
+  margin: 0 0 1rem;
+}
+
+.empty {
+  padding: 2.5rem 1.5rem;
+  border-radius: 1rem;
+  border: 1px dashed var(--iiw-border);
+  text-align: center;
+}
+
+.emptyTitle {
+  margin: 0 0 0.35rem;
+  font-weight: 600;
+  color: var(--iiw-text-on-panel);
+}
+
+.emptyLead {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--iiw-text-subtle);
+}
+
+.loader {
+  display: grid;
+  place-items: center;
+  min-height: 280px;
+}
+
+.error {
+  color: var(--iiw-error-text);
+}

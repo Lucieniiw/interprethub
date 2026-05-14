@@ -1,0 +1,127 @@
+.page {
+  max-width: 1200px;
+}
+
+.lead {
+  margin: 0.35rem 0 0;
+  color: var(--iiw-text-lead);
+  font-size: 0.9rem;
+  font-weight: 500;
+  max-width: 40rem;
+}
+
+.loader {
+  display: grid;
+  place-items: center;
+  min-height: 240px;
+}
+
+.error {
+  color: var(--iiw-error-text);
+  margin: 0 0 1rem;
+}
+
+.empty {
+  padding: 1.25rem 1rem !important;
+  text-align: center;
+  color: var(--iiw-text-muted);
+  font-size: 0.88rem;
+}
+
+.editCard {
+  margin-bottom: 1.25rem;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 102, 162, 0.35);
+  background: var(--iiw-surface-panel);
+}
+
+.formTitle {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.textarea {
+  padding: 0.5rem 0.65rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-input-border);
+  background: var(--iiw-input-bg);
+  color: var(--iiw-input-fg);
+  font: inherit;
+  resize: vertical;
+  min-height: 4.5rem;
+}
+
+.editHint {
+  margin: 0 0 1rem;
+  font-size: 0.84rem;
+  color: var(--iiw-text-muted);
+  line-height: 1.45;
+}
+
+.rateSectionLabel {
+  grid-column: 1 / -1;
+  margin: 0.25rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--iiw-text-muted);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--iiw-text-label);
+}
+
+.input {
+  padding: 0.5rem 0.65rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-input-border);
+  background: var(--iiw-input-bg);
+  color: var(--iiw-input-fg);
+}
+
+.submit {
+  padding: 0.55rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: var(--iiw-gradient-btn);
+  color: #fff;
+  font-weight: 600;
+}
+
+.editActions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.cancelBtn {
+  padding: 0.55rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-cancel-border);
+  background: transparent;
+  color: var(--iiw-cancel-text);
+}
+
+@media (max-width: 960px) {
+  .page {
+    max-width: none;
+  }
+}

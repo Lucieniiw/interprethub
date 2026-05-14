@@ -1,0 +1,10 @@
+packages:
+  - client
+  - packages/*
+
+# pnpm 11+: lifecycle scripts must be allowed here (Prisma engines, esbuild, etc.)
+allowBuilds:
+  prisma: true
+  "@prisma/client": true
+  "@prisma/engines": true
+  esbuild: true

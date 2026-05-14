@@ -1,0 +1,145 @@
+.wrap {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: var(--iiw-login-bg);
+  transition: background 0.2s ease;
+}
+
+.card {
+  width: min(400px, 100%);
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid var(--iiw-border);
+  background: var(--iiw-login-card);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.15);
+}
+
+:root[data-theme="dark"] .card {
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
+.title {
+  margin: 0 0 0.35rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--iiw-text-primary);
+}
+
+.sub {
+  margin: 0 0 1.75rem;
+  font-size: 0.9rem;
+  color: var(--iiw-text-secondary);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--iiw-text-primary);
+}
+
+.input {
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-border);
+  background: var(--iiw-surface);
+  color: var(--iiw-text-primary);
+}
+
+.input:focus {
+  outline: 2px solid rgba(0, 102, 162, 0.45);
+  border-color: transparent;
+}
+
+.error {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #dc2626;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+:root[data-theme="dark"] .error {
+  color: var(--iiw-error-text);
+}
+
+.submit {
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #0066a2, #004d7a);
+  color: #fff;
+}
+
+.submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.wrapLinguist {
+  background: var(--iiw-login-bg);
+}
+
+.cardLinguist {
+  border-color: rgba(0, 102, 162, 0.35);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 102, 162, 0.08) inset;
+}
+
+:root[data-theme="dark"] .cardLinguist {
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(0, 102, 162, 0.08) inset;
+}
+
+.cardLinguist .submit {
+  background: linear-gradient(135deg, #0066a2, #004d7a);
+}
+
+.backToPortal {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--iiw-text-muted);
+  text-decoration: none;
+}
+
+.backToPortal:hover {
+  color: var(--iiw-blue);
+}
+
+.altSignIn {
+  margin: 1rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--iiw-border);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.altSignIn a {
+  color: var(--iiw-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.wrapLinguist .altSignIn a {
+  color: var(--iiw-blue);
+}
+
+.altSignIn a:hover {
+  text-decoration: underline;
+}

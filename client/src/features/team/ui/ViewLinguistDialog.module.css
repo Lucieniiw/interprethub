@@ -1,0 +1,135 @@
+.dialogWide {
+  max-width: min(560px, 94vw);
+}
+
+.innerScroll {
+  max-height: min(85vh, 720px);
+  overflow-y: auto;
+}
+
+.section {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--iiw-divider-soft);
+}
+
+.section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0;
+}
+
+.sectionTitle {
+  margin: 0 0 0.65rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--iiw-text-muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 10rem) 1fr;
+  gap: 0.45rem 1rem;
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+.grid dt {
+  margin: 0;
+  color: var(--iiw-text-muted);
+  font-weight: 500;
+}
+
+.grid dd {
+  margin: 0;
+  color: var(--iiw-text-primary);
+  font-weight: 500;
+}
+
+.multiline {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.ratesLead {
+  margin: 0 0 0.65rem;
+  font-size: 0.78rem;
+  color: var(--iiw-text-muted);
+  line-height: 1.4;
+}
+
+.ratesGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 8rem) 1fr;
+  gap: 0.4rem 1rem;
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+.ratesGrid dt {
+  margin: 0;
+  color: var(--iiw-text-muted);
+  font-weight: 500;
+}
+
+.ratesGrid dd {
+  margin: 0;
+  color: var(--iiw-text-primary);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.manageHint {
+  margin: 0 0 1rem;
+  font-size: 0.84rem;
+  color: var(--iiw-text-muted);
+  line-height: 1.45;
+}
+
+.manageHint a {
+  color: var(--iiw-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.manageHint a:hover {
+  text-decoration: underline;
+}
+
+.loaderWrap {
+  display: grid;
+  place-items: center;
+  min-height: 160px;
+}
+
+.errText {
+  margin: 0 0 1rem;
+  font-size: 0.88rem;
+  color: var(--iiw-error-text);
+}
+
+.profileMissing {
+  margin: 0 0 0.75rem;
+  font-size: 0.82rem;
+  color: var(--iiw-text-muted);
+  line-height: 1.45;
+}
+
+@media (max-width: 420px) {
+  .grid,
+  .ratesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid dt,
+  .ratesGrid dt {
+    margin-top: 0.35rem;
+  }
+
+  .grid dt:first-child,
+  .ratesGrid dt:first-child {
+    margin-top: 0;
+  }
+}

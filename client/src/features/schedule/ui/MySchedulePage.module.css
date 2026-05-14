@@ -1,0 +1,157 @@
+.page {
+  max-width: 1400px;
+}
+
+.header {
+  margin-bottom: 1.25rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.65rem;
+  font-weight: 700;
+}
+
+.lead {
+  margin: 0.35rem 0 0;
+  color: var(--iiw-text-lead);
+  font-size: 0.95rem;
+}
+
+.inlineLink {
+  color: var(--iiw-blue);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.inlineLink:hover {
+  color: var(--iiw-blue-deep);
+}
+
+.bannerError {
+  color: var(--iiw-error-text);
+  margin: 0 0 1rem;
+}
+
+.calendarShell {
+  border-radius: 1rem;
+  border: 1px solid var(--iiw-calendar-shell-border);
+  background: var(--iiw-surface-panel);
+  padding: 1rem;
+}
+
+.calendarShell :global(.fc) {
+  --fc-border-color: var(--iiw-border);
+  --fc-page-bg-color: transparent;
+  --fc-neutral-bg-color: var(--iiw-accent-soft);
+  --fc-list-event-hover-bg-color: var(--iiw-fc-hover-bg);
+  color: var(--iiw-text-primary);
+}
+
+.calendarShell :global(.fc-toolbar-title) {
+  font-size: 1.15rem;
+}
+
+.calendarShell :global(.fc-col-header-cell) {
+  color: var(--iiw-text-label);
+}
+
+.loader {
+  display: grid;
+  place-items: center;
+  min-height: 280px;
+}
+
+.error {
+  color: var(--iiw-error-text);
+}
+
+.unavailableSection {
+  margin-top: 1.75rem;
+  padding: 1.25rem 1.35rem;
+  border-radius: 1rem;
+  border: 1px solid var(--iiw-surface-panel-border);
+  background: var(--iiw-surface-panel);
+}
+
+.sectionTitle {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--iiw-text-primary);
+}
+
+.sectionLead {
+  margin: 0 0 1.1rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--iiw-text-body-muted);
+}
+
+.busyForm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.75rem 1rem;
+}
+
+.busyLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--iiw-text-label);
+  min-width: min(100%, 11rem);
+}
+
+.busyLabelGrow {
+  flex: 1;
+  min-width: min(100%, 14rem);
+}
+
+.busyInput {
+  width: 100%;
+}
+
+.busyActions {
+  display: flex;
+  align-items: flex-end;
+}
+
+.busySubmit {
+  padding: 0.55rem 1.1rem;
+  border-radius: 0.55rem;
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, #0066a2, #004d7a);
+}
+
+.busySubmit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.busyFormError {
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  color: var(--iiw-error-text);
+}
+
+@media (max-width: 640px) {
+  .busyForm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .busyActions {
+    width: 100%;
+  }
+
+  .busySubmit {
+    width: 100%;
+  }
+}

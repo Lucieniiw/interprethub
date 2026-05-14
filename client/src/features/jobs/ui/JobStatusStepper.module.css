@@ -1,0 +1,120 @@
+.wrap {
+  margin-bottom: 1.25rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--iiw-surface-panel-border);
+  background: var(--iiw-surface-panel);
+}
+
+.label {
+  margin: 0 0 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--iiw-text-muted);
+}
+
+.track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.35rem;
+}
+
+.step {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  position: relative;
+}
+
+.step::after {
+  content: "";
+  position: absolute;
+  top: 0.65rem;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: var(--iiw-border);
+  z-index: 0;
+}
+
+.step:last-child::after {
+  display: none;
+}
+
+.stepInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.dot {
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  border: 2px solid var(--iiw-border);
+  background: var(--iiw-surface-panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--iiw-text-muted);
+  flex-shrink: 0;
+}
+
+.dotDone {
+  border-color: var(--iiw-blue);
+  background: var(--iiw-blue);
+  color: #fff;
+}
+
+.dotCurrent {
+  border-color: var(--iiw-blue);
+  background: var(--iiw-accent-soft);
+  color: var(--iiw-blue);
+  box-shadow: 0 0 0 3px rgba(0, 102, 162, 0.2);
+}
+
+.dotCancelled {
+  border-color: #b45309;
+  background: #fffbeb;
+  color: #b45309;
+}
+
+.caption {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--iiw-text-secondary);
+  line-height: 1.25;
+  max-width: 6.5rem;
+}
+
+.captionDone {
+  color: var(--iiw-text-primary);
+}
+
+.captionMuted {
+  color: var(--iiw-text-faint);
+}
+
+@media (max-width: 520px) {
+  .caption {
+    font-size: 0.68rem;
+    max-width: none;
+  }
+
+  .dot {
+    width: 1.15rem;
+    height: 1.15rem;
+    font-size: 0.55rem;
+  }
+}

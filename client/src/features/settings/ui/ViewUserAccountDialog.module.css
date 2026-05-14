@@ -1,0 +1,84 @@
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7rem) 1fr;
+  gap: 0.5rem 1rem;
+  font-size: 0.88rem;
+  margin: 0.5rem 0 0;
+  align-items: start;
+}
+
+.label {
+  color: var(--iiw-text-muted);
+  font-weight: 500;
+}
+
+.value {
+  color: var(--iiw-text-primary);
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--iiw-border);
+}
+
+.actionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.btn {
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-border);
+  background: var(--iiw-accent-soft);
+  color: var(--iiw-blue);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: var(--iiw-accent-hover-border, rgba(0, 102, 162, 0.55));
+  background: rgba(0, 102, 162, 0.12);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btnCaution {
+  border-color: rgba(251, 191, 36, 0.45);
+  color: var(--iiw-warn-text);
+  background: rgba(251, 191, 36, 0.08);
+}
+
+.btnCaution:hover:not(:disabled) {
+  border-color: rgba(251, 191, 36, 0.65);
+  background: rgba(251, 191, 36, 0.14);
+}
+
+.error {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: var(--iiw-error-text);
+}
+
+.warn {
+  margin: 0.5rem 0 0;
+  font-size: 0.82rem;
+  color: var(--iiw-warn-text);
+  line-height: 1.35;
+}
+
+.restrictedHint {
+  margin-top: 1rem;
+}

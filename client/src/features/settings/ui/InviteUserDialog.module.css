@@ -1,0 +1,267 @@
+.dialog {
+  border: none;
+  border-radius: 1rem;
+  padding: 0;
+  max-width: min(420px, 94vw);
+  background: var(--iiw-surface-panel);
+  color: var(--iiw-text-primary);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.dialog::backdrop {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.inner {
+  padding: 1.35rem 1.35rem 1.25rem;
+}
+
+.head {
+  margin-bottom: 1rem;
+}
+
+.title {
+  margin: 0 0 0.35rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.sub {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--iiw-text-lead);
+  line-height: 1.45;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.optional {
+  font-weight: 500;
+  color: var(--iiw-text-muted);
+}
+
+.input {
+  padding: 0.5rem 0.65rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-input-border);
+  background: var(--iiw-input-bg);
+  color: var(--iiw-input-fg);
+  font: inherit;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.fieldLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.roleGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem 0.75rem;
+}
+
+@media (max-width: 380px) {
+  .roleGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--iiw-text-secondary);
+  cursor: pointer;
+}
+
+.radio input {
+  accent-color: var(--iiw-blue);
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--iiw-text-muted);
+  line-height: 1.35;
+}
+
+.error {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--iiw-error-text);
+}
+
+.warn {
+  margin: 0.5rem 0 0;
+  font-size: 0.82rem;
+  color: var(--iiw-warn-text);
+  line-height: 1.35;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.65rem;
+  margin-top: 0.25rem;
+}
+
+.cancel {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-cancel-border);
+  background: transparent;
+  color: var(--iiw-cancel-text);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.cancel:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.submit {
+  padding: 0.5rem 1.1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: var(--iiw-gradient-btn);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.submitDanger {
+  padding: 0.5rem 1.1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: linear-gradient(135deg, #b91c1c, #991b1b);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.submitDanger:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.done {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.linkBox {
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-border);
+  background: var(--iiw-bg-main);
+  overflow: auto;
+}
+
+.linkCode {
+  font-size: 0.72rem;
+  word-break: break-all;
+  color: var(--iiw-text-secondary);
+}
+
+.copyBtn {
+  align-self: flex-start;
+  padding: 0.4rem 0.85rem;
+  border-radius: 0.45rem;
+  border: 1px solid var(--iiw-border);
+  background: var(--iiw-accent-soft);
+  color: var(--iiw-blue);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.doneBtn {
+  margin-top: 0.25rem;
+  padding: 0.55rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: var(--iiw-gradient-btn);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Dark theme: clearer panel contrast & inputs */
+:root[data-theme="dark"] .dialog {
+  background: #1c2128;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 0 0 1px rgba(0, 102, 162, 0.18),
+    0 28px 80px rgba(0, 0, 0, 0.55);
+}
+
+:root[data-theme="dark"] .dialog::backdrop {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+:root[data-theme="dark"] .title {
+  color: #f1f5f9;
+}
+
+:root[data-theme="dark"] .input {
+  background: rgba(15, 18, 24, 0.85);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #e8ecf1;
+}
+
+:root[data-theme="dark"] .input:focus {
+  outline: none;
+  border-color: rgba(0, 102, 162, 0.55);
+  box-shadow: 0 0 0 3px rgba(0, 102, 162, 0.18);
+}
+
+:root[data-theme="dark"] .radio {
+  color: rgba(232, 236, 241, 0.82);
+}
+
+:root[data-theme="dark"] .cancel {
+  border-color: rgba(255, 255, 255, 0.14);
+  color: rgba(232, 236, 241, 0.85);
+}
+
+:root[data-theme="dark"] .cancel:hover {
+  border-color: rgba(0, 102, 162, 0.45);
+  color: var(--iiw-accent-highlight);
+}
+
+:root[data-theme="dark"] .linkBox {
+  background: rgba(0, 0, 0, 0.35);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="dark"] .copyBtn {
+  border-color: rgba(0, 102, 162, 0.35);
+  background: rgba(0, 102, 162, 0.12);
+  color: var(--iiw-accent-highlight);
+}

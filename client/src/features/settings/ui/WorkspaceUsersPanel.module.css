@@ -1,0 +1,437 @@
+/* User Management — dark table with brand primary (--iiw-blue) header */
+
+.um {
+  --um-primary: var(--iiw-blue);
+  --um-primary-soft: var(--iiw-accent-soft);
+  --um-green-bg: #1b3320;
+  --um-green-text: #4cd964;
+  --um-orange-bg: #33251b;
+  --um-orange-text: #ff9500;
+  --um-lock-yes-bg: #33251b;
+  --um-lock-yes-text: #ff9500;
+  --um-row-dark: rgba(255, 255, 255, 0.03);
+  --um-text-muted: rgba(232, 236, 241, 0.55);
+  --um-border: rgba(255, 255, 255, 0.06);
+}
+
+:root[data-theme="light"] .um {
+  --um-green-bg: #dcfce7;
+  --um-green-text: #15803d;
+  --um-orange-bg: #ffedd5;
+  --um-orange-text: #c2410c;
+  --um-lock-yes-bg: #ffedd5;
+  --um-lock-yes-text: #c2410c;
+  --um-row-dark: rgba(0, 0, 0, 0.02);
+  --um-text-muted: rgba(44, 42, 42, 0.55);
+  --um-border: rgba(0, 0, 0, 0.08);
+}
+
+.umHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.umTitle {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--iiw-text-primary);
+  letter-spacing: -0.02em;
+}
+
+.inviteBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: var(--iiw-blue);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+}
+
+.inviteBtn:hover {
+  color: var(--iiw-blue-deep);
+  background: var(--um-primary-soft);
+}
+
+.inviteIcon {
+  display: grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  border: 2px solid currentColor;
+  font-size: 1rem;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.flash {
+  margin-bottom: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.65rem;
+  border: 1px solid var(--iiw-border);
+  background: var(--iiw-surface-elevated);
+  font-size: 0.85rem;
+}
+
+.flashText {
+  margin: 0 0 0.5rem;
+  color: var(--iiw-text-secondary);
+  line-height: 1.45;
+}
+
+.flashLinkRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.flashCode {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.72rem;
+  word-break: break-all;
+  color: var(--iiw-text-muted);
+}
+
+.flashCopy {
+  flex-shrink: 0;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.45rem;
+  border: 1px solid var(--iiw-border);
+  background: var(--iiw-accent-soft);
+  color: var(--iiw-blue);
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.flashDismiss {
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.4rem;
+  border: none;
+  background: transparent;
+  color: var(--iiw-text-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.tableWrap {
+  border-radius: 14px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  border: 1px solid var(--um-border);
+  background: var(--iiw-surface-panel);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+:root[data-theme="dark"] .tableWrap {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.table thead tr {
+  background: var(--um-primary);
+  color: var(--iiw-on-gradient-btn);
+}
+
+.table th {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+}
+
+.table th:first-child {
+  padding-left: 1.15rem;
+}
+
+.thActions {
+  text-align: right;
+  padding-right: 1.15rem;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid var(--um-border);
+  background: var(--um-row-dark);
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: rgba(0, 102, 162, 0.08);
+}
+
+:root[data-theme="light"] .table tbody tr:hover {
+  background: rgba(0, 102, 162, 0.06);
+}
+
+.table td {
+  padding: 0.85rem 1rem;
+  vertical-align: middle;
+}
+
+.table td:last-child {
+  text-align: right;
+}
+
+.userCell {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: linear-gradient(
+    145deg,
+    rgba(0, 102, 162, 0.35),
+    rgba(0, 77, 122, 0.28)
+  );
+  color: var(--iiw-on-gradient-btn);
+}
+
+:root[data-theme="light"] .avatar {
+  background: linear-gradient(145deg, rgba(0, 102, 162, 0.22), rgba(0, 102, 162, 0.12));
+  color: var(--iiw-blue-deep);
+}
+
+.userText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.userName {
+  font-weight: 700;
+  color: var(--iiw-text-primary);
+}
+
+.userEmail {
+  font-size: 0.78rem;
+  color: var(--um-text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: min(240px, 36vw);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.roleBadge.roleSuper {
+  background: rgba(0, 102, 162, 0.35);
+  color: var(--iiw-accent-highlight);
+}
+
+.roleBadge.roleAdmin {
+  background: rgba(0, 102, 162, 0.28);
+  color: var(--iiw-accent-highlight);
+}
+
+.roleBadge.roleInterp {
+  background: rgba(0, 102, 162, 0.22);
+  color: var(--iiw-accent-highlight);
+}
+
+:root[data-theme="light"] .roleBadge.roleSuper {
+  background: rgba(0, 102, 162, 0.18);
+  color: var(--iiw-blue-deep);
+}
+
+:root[data-theme="light"] .roleBadge.roleAdmin {
+  background: rgba(0, 102, 162, 0.14);
+  color: var(--iiw-blue);
+}
+
+:root[data-theme="light"] .roleBadge.roleInterp {
+  background: rgba(0, 102, 162, 0.12);
+  color: var(--iiw-blue);
+}
+
+.badgeStatus.badgeActive {
+  background: var(--um-green-bg);
+  color: var(--um-green-text);
+}
+
+.badgeStatus.badgePending {
+  background: var(--um-orange-bg);
+  color: var(--um-orange-text);
+}
+
+.badgeLock {
+  background: var(--um-green-bg);
+  color: var(--um-green-text);
+}
+
+.badgeLockYes {
+  background: var(--um-lock-yes-bg);
+  color: var(--um-lock-yes-text);
+}
+
+.lastActive {
+  color: var(--iiw-text-primary);
+  font-weight: 500;
+  font-size: 0.84rem;
+}
+
+.actions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+}
+
+.iconBtn {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: 0.45rem;
+  background: transparent;
+  color: var(--iiw-accent-highlight);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.iconBtn:hover:not(:disabled) {
+  background: rgba(0, 102, 162, 0.15);
+  color: var(--iiw-blue);
+}
+
+.iconBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.iconBtnDanger {
+  color: var(--iiw-error-text);
+}
+
+.iconBtnDanger:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--iiw-error-text) 14%, transparent);
+  color: var(--iiw-error-text);
+}
+
+:root[data-theme="light"] .iconBtn {
+  color: var(--iiw-blue);
+}
+
+:root[data-theme="light"] .iconBtn:hover:not(:disabled) {
+  background: rgba(0, 102, 162, 0.1);
+}
+
+.hint {
+  margin: 1rem 0 0;
+  font-size: 0.78rem;
+  color: var(--iiw-text-muted);
+  line-height: 1.45;
+  max-width: 52rem;
+}
+
+.loader {
+  display: grid;
+  place-items: center;
+  min-height: 160px;
+}
+
+.error {
+  color: var(--iiw-error-text);
+  margin: 0;
+}
+
+@media (max-width: 960px) {
+  .table {
+    min-width: 640px;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.65rem 0.55rem;
+    font-size: 0.82rem;
+  }
+
+  .table th:first-child,
+  .table td:first-child {
+    padding-left: 0.75rem;
+  }
+
+  .thActions,
+  .table td:last-child {
+    padding-right: 0.75rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .umHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .inviteBtn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .table {
+    min-width: 520px;
+  }
+
+  .userEmail {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .badge {
+    white-space: normal;
+    text-align: center;
+    line-height: 1.25;
+  }
+}

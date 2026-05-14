@@ -1,0 +1,163 @@
+.page {
+  max-width: 1200px;
+}
+
+.loader {
+  display: grid;
+  place-items: center;
+  min-height: 240px;
+}
+
+.error {
+  color: var(--iiw-error-text);
+}
+
+.screenOnly {
+  margin-bottom: 1rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.screenHint {
+  margin: 0.65rem 0 0;
+  font-size: 0.82rem;
+  color: var(--iiw-text-muted);
+  max-width: 44rem;
+  line-height: 1.45;
+}
+
+.printBtn,
+.downloadBtn {
+  padding: 0.55rem 1.1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.printBtn {
+  border: none;
+  background: var(--iiw-gradient-btn);
+  color: #fff;
+}
+
+.printBtn:hover {
+  filter: brightness(1.05);
+}
+
+.downloadBtn {
+  border: 1px solid var(--iiw-border);
+  background: transparent;
+  color: var(--iiw-text-primary);
+}
+
+.downloadBtn:hover {
+  border-color: var(--iiw-blue);
+  color: var(--iiw-blue);
+}
+
+.backLink {
+  color: var(--iiw-blue);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.reportHeader {
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--iiw-border);
+}
+
+.reportTitle {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.meta {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  color: var(--iiw-text-muted);
+}
+
+.count {
+  margin: 0.5rem 0 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--iiw-text-primary);
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.empty {
+  text-align: center;
+  color: var(--iiw-text-muted);
+  font-style: italic;
+  padding: 2rem 1rem;
+}
+
+.reportFooter {
+  margin-top: 1.5rem;
+  padding-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--iiw-text-muted);
+  border-top: 1px solid var(--iiw-border);
+}
+
+@media print {
+  .screenOnly {
+    display: none !important;
+  }
+
+  .page {
+    padding: 0;
+    max-width: none;
+    background: #fff !important;
+  }
+
+  @page {
+    margin: 12mm;
+  }
+
+  .reportHeader {
+    border-bottom-color: #333;
+  }
+
+  .reportTitle,
+  .meta,
+  .count {
+    color: #0f172a !important;
+  }
+
+  .cardGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .cardGrid article {
+    break-inside: avoid;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    background: #fff !important;
+  }
+
+  .reportFooter {
+    color: #64748b !important;
+  }
+}

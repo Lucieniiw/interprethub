@@ -1,0 +1,59 @@
+.page {
+  max-width: 720px;
+}
+
+.sectionTitle {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.header {
+  margin-bottom: 1.25rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.65rem;
+  font-weight: 700;
+}
+
+.lead {
+  margin: 0.35rem 0 0;
+  color: var(--iiw-text-lead);
+  font-size: 0.95rem;
+}
+
+.policyRow {
+  margin: 0 0 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.9rem;
+  color: var(--iiw-text-on-panel);
+}
+
+.policyLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--iiw-text-subtle);
+}
+
+.policyHint {
+  margin: 0.75rem 0 0;
+  font-size: 0.8rem;
+  color: var(--iiw-text-subtle);
+}
+
+.error {
+  color: var(--iiw-error-text);
+  margin: 0 0 1rem;
+}
+
+.loader {
+  display: grid;
+  place-items: center;
+  min-height: 280px;
+}

@@ -1,0 +1,254 @@
+.page {
+  max-width: 1400px;
+}
+
+.header {
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.headerActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.secondaryBtn {
+  padding: 0.55rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-border);
+  background: transparent;
+  color: var(--iiw-text-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.secondaryBtn:hover {
+  border-color: var(--iiw-blue);
+  color: var(--iiw-blue);
+}
+
+.newJob {
+  padding: 0.55rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--iiw-gradient-btn);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.newJob:hover {
+  filter: brightness(1.05);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.65rem;
+  font-weight: 700;
+}
+
+.lead {
+  margin: 0.35rem 0 0;
+  color: var(--iiw-text-lead);
+  font-size: 0.95rem;
+}
+
+.viewTabs {
+  display: flex;
+  gap: 0.35rem;
+  margin: 0 0 1.25rem;
+  padding: 0.25rem;
+  border-radius: 0.65rem;
+  background: var(--iiw-accent-soft);
+  border: 1px solid var(--iiw-surface-panel-border);
+  width: fit-content;
+}
+
+.viewTab {
+  padding: 0.45rem 1.1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: transparent;
+  color: var(--iiw-text-lead);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.viewTab:hover {
+  color: var(--iiw-text-primary);
+}
+
+.viewTabActive {
+  background: var(--iiw-surface-panel);
+  color: var(--iiw-blue);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
+.tabBadge {
+  min-width: 1.1rem;
+  height: 1.1rem;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: inline-grid;
+  place-items: center;
+  line-height: 1;
+}
+
+.openSection {
+  margin-bottom: 1.75rem;
+}
+
+.listSection {
+  margin-bottom: 1.5rem;
+}
+
+.listSectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.listSectionActions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.bannerError {
+  color: var(--iiw-error-text);
+  margin: 0 0 1rem;
+}
+
+.submissionsPageTitle {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.queueBadge {
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: inline-grid;
+  place-items: center;
+  line-height: 1;
+}
+
+.submissionsLead {
+  margin: 0 0 1rem;
+  font-size: 0.82rem;
+  color: var(--iiw-text-lead);
+  line-height: 1.45;
+}
+
+.submissionsEmpty {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--iiw-text-muted);
+}
+
+.submissionGroup {
+  margin-bottom: 1.5rem;
+}
+
+.submissionGroup:last-child {
+  margin-bottom: 0;
+}
+
+.submissionGroupTitle {
+  margin: 0 0 0.65rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--iiw-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.submissionGroupCount {
+  min-width: 1.15rem;
+  height: 1.15rem;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--iiw-accent-soft);
+  color: var(--iiw-blue);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: inline-grid;
+  place-items: center;
+  line-height: 1;
+}
+
+.calendarShell {
+  border-radius: 1rem;
+  border: 1px solid var(--iiw-surface-panel-border);
+  background: var(--iiw-surface-panel);
+  padding: 1rem;
+}
+
+.calendarShell :global(.fc) {
+  --fc-border-color: var(--iiw-border);
+  --fc-page-bg-color: transparent;
+  --fc-neutral-bg-color: var(--iiw-accent-soft);
+  --fc-list-event-hover-bg-color: var(--iiw-fc-hover-bg);
+  color: var(--iiw-text-primary);
+}
+
+.calendarShell :global(.fc-toolbar-title) {
+  font-size: 1.15rem;
+}
+
+.calendarShell :global(.fc-col-header-cell) {
+  color: var(--iiw-text-label);
+}
+
+.loader {
+  display: grid;
+  place-items: center;
+  min-height: 280px;
+}
+
+.error {
+  color: var(--iiw-error-text);
+}

@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+/* Tailwind theme — IIW brand (aligned with :root --iiw-blue) */
+@theme {
+  --color-iiw-50: #f0f9ff;
+  --color-iiw-100: #e0f2fe;
+  --color-iiw-200: #bae6fd;
+  --color-iiw-500: #0b7ab8;
+  --color-iiw-600: #0066a2;
+  --color-iiw-700: #004d7a;
+  --color-iiw-800: #003a5c;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* International Institute of Wisconsin — logo palette */
+:root {
+  --iiw-blue: #0066a2;
+  --iiw-blue-deep: #004d7a;
+  --iiw-gray-mid: #999999;
+  --iiw-gray-dark: #807e7e;
+}
+
+/* Dark mode (default for existing users) */
+:root[data-theme="dark"] {
+  --iiw-bg-page: #0e1114;
+  --iiw-bg-sidebar: #12161c;
+  --iiw-bg-main: #0e1114;
+  --iiw-surface: rgba(255, 255, 255, 0.04);
+  --iiw-surface-elevated: rgba(255, 255, 255, 0.06);
+  --iiw-text-primary: #e8ecf1;
+  --iiw-text-secondary: rgba(232, 236, 241, 0.7);
+  --iiw-text-muted: rgba(153, 153, 153, 0.95);
+  --iiw-text-brand-mid: #b0b0b0;
+  --iiw-text-brand-strong: #c9c7c7;
+  --iiw-border: rgba(255, 255, 255, 0.1);
+  --iiw-accent-soft: rgba(0, 102, 162, 0.22);
+  --iiw-nav-active-bg: rgba(0, 102, 162, 0.28);
+  --iiw-nav-active-color: #fff;
+  --iiw-login-bg: radial-gradient(
+      ellipse 80% 60% at 50% -20%,
+      rgba(0, 102, 162, 0.2),
+      transparent
+    ),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(0, 102, 162, 0.08), transparent),
+    #0e1114;
+  --iiw-login-card: rgba(18, 22, 28, 0.95);
+  --iiw-role-pill-bg: rgba(0, 102, 162, 0.28);
+  --iiw-role-pill-text: #9ecae8;
+  /* Feature panels, forms, tables */
+  --iiw-surface-panel: rgba(18, 24, 32, 0.65);
+  --iiw-surface-panel-border: rgba(255, 255, 255, 0.08);
+  --iiw-text-lead: rgba(232, 236, 241, 0.55);
+  --iiw-text-subtle: rgba(232, 236, 241, 0.45);
+  --iiw-text-dim: rgba(232, 236, 241, 0.5);
+  --iiw-text-label: rgba(232, 236, 241, 0.75);
+  --iiw-text-soft: rgba(232, 236, 241, 0.65);
+  --iiw-text-on-panel: #e8ecf1;
+  --iiw-text-body-muted: rgba(232, 236, 241, 0.82);
+  --iiw-text-faint: rgba(232, 236, 241, 0.4);
+  --iiw-input-bg: rgba(15, 20, 25, 0.9);
+  --iiw-input-border: rgba(255, 255, 255, 0.12);
+  --iiw-input-fg: #e8ecf1;
+  --iiw-divider-soft: rgba(255, 255, 255, 0.06);
+  --iiw-cancel-border: rgba(255, 255, 255, 0.12);
+  --iiw-cancel-text: rgba(232, 236, 241, 0.85);
+  --iiw-gradient-btn: linear-gradient(135deg, var(--iiw-blue), var(--iiw-blue-deep));
+  --iiw-accent-highlight: #9ecae8;
+  --iiw-accent-hover-border: rgba(0, 102, 162, 0.55);
+  --iiw-leader-rank-bg: linear-gradient(
+    135deg,
+    rgba(0, 102, 162, 0.45),
+    rgba(0, 77, 122, 0.3)
+  );
+  --iiw-calendar-shell-border: rgba(0, 102, 162, 0.28);
+  --iiw-fc-hover-bg: rgba(0, 102, 162, 0.15);
+  --iiw-fc-event-border: rgba(0, 102, 162, 0.45);
+  --iiw-fc-event-bg: rgba(0, 102, 162, 0.28);
+  /* Semantic (charts, alerts, primary actions) */
+  --iiw-accent: var(--iiw-blue);
+  --iiw-on-gradient-btn: #ffffff;
+  --iiw-error-text: #fda4af;
+  --iiw-warn-text: #fcd34d;
+  --iiw-warn-bg: rgba(251, 191, 36, 0.1);
+  --iiw-warn-border: rgba(251, 191, 36, 0.35);
+  --iiw-chart-axis: #94a3b8;
+  --iiw-chart-tick: #94a3b8;
+  --iiw-chart-tooltip-bg: #121820;
+  --iiw-chart-tooltip-border: rgba(255, 255, 255, 0.1);
+  --iiw-chart-tooltip-label: #e8ecf1;
+}
+
+/* Light mode */
+:root[data-theme="light"] {
+  --iiw-bg-page: #f4f7fb;
+  --iiw-bg-sidebar: #e4edf5;
+  --iiw-bg-main: #f4f7fb;
+  --iiw-surface: #ffffff;
+  --iiw-surface-elevated: #ffffff;
+  --iiw-text-primary: #2c2a2a;
+  --iiw-text-secondary: #807e7e;
+  --iiw-text-muted: #999999;
+  --iiw-text-brand-mid: var(--iiw-gray-mid);
+  --iiw-text-brand-strong: var(--iiw-gray-dark);
+  --iiw-border: rgba(0, 0, 0, 0.12);
+  --iiw-accent-soft: rgba(0, 102, 162, 0.1);
+  --iiw-nav-active-bg: rgba(0, 102, 162, 0.14);
+  --iiw-nav-active-color: var(--iiw-blue);
+  --iiw-login-bg: radial-gradient(
+      ellipse 80% 60% at 50% -20%,
+      rgba(0, 102, 162, 0.12),
+      transparent
+    ),
+    #f4f7fb;
+  --iiw-login-card: #ffffff;
+  --iiw-role-pill-bg: rgba(0, 102, 162, 0.12);
+  --iiw-role-pill-text: var(--iiw-blue);
+  --iiw-surface-panel: #ffffff;
+  --iiw-surface-panel-border: rgba(0, 0, 0, 0.1);
+  --iiw-text-lead: var(--iiw-text-muted);
+  --iiw-text-subtle: rgba(128, 126, 126, 0.88);
+  --iiw-text-dim: rgba(128, 126, 126, 0.78);
+  --iiw-text-label: var(--iiw-text-secondary);
+  --iiw-text-soft: var(--iiw-text-secondary);
+  --iiw-text-on-panel: var(--iiw-text-primary);
+  --iiw-text-body-muted: rgba(44, 42, 42, 0.88);
+  --iiw-text-faint: rgba(128, 126, 126, 0.65);
+  --iiw-input-bg: #ffffff;
+  --iiw-input-border: rgba(0, 0, 0, 0.14);
+  --iiw-input-fg: var(--iiw-text-primary);
+  --iiw-divider-soft: rgba(0, 0, 0, 0.08);
+  --iiw-cancel-border: rgba(0, 0, 0, 0.14);
+  --iiw-cancel-text: var(--iiw-text-secondary);
+  --iiw-gradient-btn: linear-gradient(135deg, var(--iiw-blue), #005a8c);
+  --iiw-accent-highlight: var(--iiw-blue);
+  --iiw-accent-hover-border: rgba(0, 102, 162, 0.35);
+  --iiw-leader-rank-bg: linear-gradient(135deg, var(--iiw-blue), #005a8c);
+  --iiw-calendar-shell-border: rgba(0, 102, 162, 0.22);
+  --iiw-fc-hover-bg: rgba(0, 102, 162, 0.08);
+  --iiw-fc-event-border: rgba(0, 102, 162, 0.4);
+  --iiw-fc-event-bg: rgba(0, 102, 162, 0.14);
+  --iiw-accent: var(--iiw-blue);
+  --iiw-on-gradient-btn: #ffffff;
+  --iiw-error-text: #b91c1c;
+  --iiw-warn-text: #92400e;
+  --iiw-warn-bg: rgba(251, 146, 60, 0.14);
+  --iiw-warn-border: rgba(217, 119, 6, 0.35);
+  --iiw-chart-axis: #64748b;
+  --iiw-chart-tick: #64748b;
+  --iiw-chart-tooltip-bg: #ffffff;
+  --iiw-chart-tooltip-border: rgba(0, 0, 0, 0.12);
+  --iiw-chart-tooltip-label: var(--iiw-text-primary);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "DM Sans", system-ui, sans-serif;
+  background: var(--iiw-bg-page);
+  color: var(--iiw-text-primary);
+  line-height: 1.5;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+@media print {
+  html,
+  body,
+  #root {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  body {
+    background: #fff !important;
+  }
+
+  @page {
+    margin: 12mm;
+  }
+}

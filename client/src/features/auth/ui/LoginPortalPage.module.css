@@ -1,0 +1,140 @@
+.wrap {
+  min-height: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background: var(--iiw-login-bg);
+  transition: background 0.2s ease;
+}
+
+.intro {
+  text-align: center;
+  max-width: 40rem;
+}
+
+.heroLogo {
+  height: 4.5rem;
+  width: auto;
+  max-width: min(100%, 320px);
+  object-fit: contain;
+  margin: 0 auto 1.25rem;
+  display: block;
+}
+
+.title {
+  margin: 0 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  font-size: 1.35rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--iiw-text-primary);
+}
+
+.titleLine {
+  font-size: 0.7em;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--iiw-text-brand-mid);
+}
+
+.titleWisconsin {
+  font-size: 1.25em;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--iiw-text-brand-strong);
+}
+
+.lead {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--iiw-text-secondary);
+  line-height: 1.5;
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+  width: min(720px, 100%);
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.choice {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--iiw-border);
+  background: var(--iiw-login-card);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+:root[data-theme="dark"] .choice {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+}
+
+.choice:hover {
+  border-color: var(--iiw-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 102, 162, 0.15);
+}
+
+.choiceLinguist {
+  border-color: rgba(0, 102, 162, 0.35);
+}
+
+.choiceLinguist:hover {
+  border-color: var(--iiw-blue);
+}
+
+.choiceCoordinator {
+  border-color: rgba(0, 102, 162, 0.35);
+}
+
+.choiceCoordinator:hover {
+  border-color: var(--iiw-blue);
+}
+
+.choiceLabel {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--iiw-text-primary);
+}
+
+.choiceDesc {
+  font-size: 0.9rem;
+  color: var(--iiw-text-secondary);
+  line-height: 1.45;
+}
+
+.choiceAction {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--iiw-blue);
+}
+
+.choiceLinguist .choiceAction,
+.choiceCoordinator .choiceAction {
+  color: var(--iiw-blue);
+}

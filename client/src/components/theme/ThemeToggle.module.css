@@ -1,0 +1,27 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-border);
+  background: var(--iiw-surface-elevated);
+  color: var(--iiw-text-secondary);
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.toggle:hover {
+  border-color: var(--iiw-blue);
+  color: var(--iiw-blue);
+  background: var(--iiw-accent-soft);
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}

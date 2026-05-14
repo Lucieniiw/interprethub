@@ -1,0 +1,39 @@
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1.1rem;
+  margin: 0 0 1rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.65rem;
+  border: 1px solid var(--iiw-surface-panel-border);
+  background: var(--iiw-accent-soft);
+  font-size: 0.8rem;
+  color: var(--iiw-text-muted);
+}
+
+.title {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--iiw-text-label);
+  flex-shrink: 0;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--iiw-text-primary);
+  font-weight: 500;
+}
+
+.swatch {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 0.2rem;
+  border: 2px solid;
+  flex-shrink: 0;
+}

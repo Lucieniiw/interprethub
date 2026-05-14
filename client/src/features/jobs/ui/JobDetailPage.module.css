@@ -1,0 +1,656 @@
+.page {
+  max-width: 720px;
+}
+
+.header {
+  margin-bottom: 1.25rem;
+}
+
+.backBtn {
+  border: none;
+  background: none;
+  color: var(--iiw-text-soft);
+  font-size: 0.85rem;
+  padding: 0 0 0.5rem;
+}
+
+.backBtn:hover {
+  color: var(--iiw-accent-highlight);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.meta {
+  margin: 0.35rem 0 0;
+  color: var(--iiw-text-lead);
+  font-size: 0.95rem;
+}
+
+.status {
+  color: var(--iiw-accent-highlight);
+  font-weight: 600;
+}
+
+.banner {
+  color: var(--iiw-error-text);
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.65rem;
+  border: 1px solid var(--iiw-error-border, #fecaca);
+  background: var(--iiw-error-bg, #fef2f2);
+}
+
+.card {
+  margin-bottom: 1.25rem;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  border: 1px solid var(--iiw-surface-panel-border);
+  background: var(--iiw-surface-panel);
+}
+
+.h2 {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.formSection {
+  margin: 0 0 1.25rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--iiw-border);
+}
+
+.formSection:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.formSectionTitle {
+  margin: 0 0 0.75rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--iiw-blue);
+}
+
+.dl {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 0.5rem 1rem;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.dl dt {
+  color: var(--iiw-text-dim);
+}
+
+.dl dd {
+  margin: 0;
+}
+
+.detailsPayBreakdown {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--iiw-border);
+}
+
+/** Pay lives in Details on screen; this duplicate is for print/PDF of the completion report only. */
+.payBreakdownPrintOnly {
+  display: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--iiw-text-label);
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.input,
+.textarea {
+  padding: 0.5rem 0.65rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-input-border);
+  background: var(--iiw-input-bg);
+  color: var(--iiw-input-fg);
+  font: inherit;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.primary {
+  margin-top: 1rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: var(--iiw-gradient-btn);
+  color: #fff;
+  font-weight: 600;
+}
+
+.secondary {
+  margin-top: 1rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-input-border);
+  background: transparent;
+  color: var(--iiw-text-lead);
+  font-weight: 600;
+}
+
+.secondary:hover {
+  border-color: var(--iiw-accent-highlight);
+  color: var(--iiw-accent-highlight);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.actions .primary,
+.actions .secondary {
+  margin-top: 0;
+  min-height: 2.75rem;
+  padding-left: 1.15rem;
+  padding-right: 1.15rem;
+}
+
+.stickyFormActions {
+  position: sticky;
+  bottom: 0;
+  z-index: 4;
+  margin: 1.25rem -1.25rem -1.25rem;
+  padding: 0.85rem 1.25rem calc(0.85rem + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--iiw-border);
+  background: var(--iiw-surface-panel);
+  box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.stepperWrap {
+  margin-bottom: 1rem;
+}
+
+.sigWrap {
+  margin-top: 0.35rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-input-border);
+  background: #fff;
+  overflow: hidden;
+}
+
+.sigCanvas {
+  display: block;
+  width: 100%;
+  height: 140px;
+  touch-action: none;
+}
+
+.sigClear {
+  margin-top: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.35rem;
+  border: 1px solid var(--iiw-input-border);
+  background: transparent;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.sigClear:hover {
+  border-color: var(--iiw-accent-highlight);
+}
+
+.help {
+  margin: 0 0 1rem;
+  font-size: 0.88rem;
+  color: var(--iiw-text-soft);
+  line-height: 1.45;
+}
+
+.disputeFeedback {
+  margin: 0.75rem 0 0;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-input-border);
+  background: var(--iiw-input-bg);
+  color: var(--iiw-text-primary);
+}
+
+.disputeFeedbackBody {
+  margin: 0.35rem 0 0;
+  white-space: pre-wrap;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.outcomeFieldset {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.65rem;
+  border: 1px solid var(--iiw-surface-panel-border);
+}
+
+.legend {
+  padding: 0 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.radioRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.35rem 0;
+  font-size: 0.9rem;
+}
+
+.totalHours {
+  margin: 0.35rem 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.subtle {
+  font-weight: 400;
+  color: var(--iiw-text-soft);
+  font-size: 0.85rem;
+}
+
+.loader {
+  display: grid;
+  place-items: center;
+  min-height: 240px;
+}
+
+.error {
+  color: var(--iiw-error-text);
+}
+
+.back {
+  color: var(--iiw-accent-highlight);
+}
+
+.attachmentLink {
+  color: var(--iiw-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.attachmentLink:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dl {
+    grid-template-columns: 1fr;
+  }
+
+  .dl dt {
+    font-weight: 600;
+    color: var(--iiw-text-label);
+    margin-top: 0.35rem;
+  }
+
+  .dl dt:first-child {
+    margin-top: 0;
+  }
+
+  .input {
+    min-height: 2.75rem;
+  }
+}
+
+.screenOnly {
+}
+
+.completionReport {
+  break-inside: avoid;
+}
+
+.reportLetterhead {
+  margin: -0.35rem -1.25rem 1.25rem;
+  padding: 1rem 1.25rem 1rem;
+  border-radius: 0.65rem;
+  background: linear-gradient(135deg, rgba(0, 102, 162, 0.12), rgba(0, 102, 162, 0.03));
+  border: 1px solid var(--iiw-border);
+}
+
+.reportLetterheadTop {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.reportLetterheadLogo {
+  height: 2.5rem;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.reportLetterheadBrand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.reportLetterheadOrg {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--iiw-text-muted);
+}
+
+.reportLetterheadDoc {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--iiw-text-primary);
+}
+
+.reportLetterheadBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--iiw-border);
+  font-size: 0.82rem;
+  color: var(--iiw-text-secondary);
+}
+
+.reportLetterheadPrinted {
+  font-size: 0.78rem;
+  color: var(--iiw-text-muted);
+  white-space: nowrap;
+}
+
+.reportHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.reportTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin: 1rem 0;
+}
+
+.reportTable th,
+.reportTable td {
+  border: 1px solid var(--iiw-border);
+  padding: 0.45rem 0.5rem;
+  text-align: left;
+}
+
+.reportTotalRow td {
+  background: var(--iiw-accent-soft);
+}
+
+.reportMoneyTitle {
+  margin: 1rem 0 0.35rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.reportDl {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 0.4rem 0.75rem;
+  margin: 0 0 1rem;
+  font-size: 0.88rem;
+}
+
+.reportDl dt {
+  color: var(--iiw-text-dim);
+}
+
+.reportDl dd {
+  margin: 0;
+}
+
+.reportSigGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 700px) {
+  .reportSigGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.reportSigBlock {
+  border: 1px solid var(--iiw-border);
+  border-radius: 0.5rem;
+  padding: 0.65rem;
+}
+
+.reportSigLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.reportSigImg {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.35rem;
+}
+
+.reportSigText {
+  margin: 0;
+  font-size: 0.72rem;
+  white-space: pre-wrap;
+}
+
+.reportSigEmpty {
+  margin: 0;
+  color: var(--iiw-text-muted);
+  font-size: 0.85rem;
+}
+
+@media print {
+  :global(body:not(.iiw-print-job-record)) .page:has(.completionReport) > *:not(.completionReport) {
+    display: none !important;
+  }
+
+  .screenOnly {
+    display: none !important;
+  }
+
+  .page {
+    max-width: none;
+    padding: 0;
+    background: #fff !important;
+  }
+
+  .completionReport {
+    break-inside: auto;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    background: #fff !important;
+    color: #0f172a !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
+  }
+
+  .completionReport .payBreakdownPrintOnly {
+    display: block !important;
+  }
+
+  .completionReport .payBreakdownPrintOnly .detailsPayBreakdown {
+    border-top: 1px solid #cbd5e1;
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+
+  .completionReport .reportLetterhead {
+    margin: 0 0 1rem !important;
+    padding: 0.85rem 0 !important;
+    border: none !important;
+    border-bottom: 2px solid #0066a2 !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+  }
+
+  .completionReport .reportLetterheadOrg {
+    color: #64748b !important;
+  }
+
+  .completionReport .reportLetterheadDoc {
+    color: #0f172a !important;
+  }
+
+  .completionReport .reportLetterheadBar {
+    border-top-color: #e2e8f0 !important;
+    color: #334155 !important;
+  }
+
+  .completionReport .reportLetterheadPrinted {
+    color: #64748b !important;
+  }
+
+  .completionReport .h2,
+  .completionReport .reportMoneyTitle {
+    color: #0f172a !important;
+  }
+
+  .completionReport .reportDl dt {
+    color: #64748b !important;
+  }
+
+  .completionReport .reportDl dd,
+  .completionReport .help {
+    color: #0f172a !important;
+  }
+
+  .completionReport .reportTable th,
+  .completionReport .reportTable td {
+    border-color: #cbd5e1 !important;
+    color: #0f172a !important;
+  }
+
+  .completionReport .reportTotalRow td {
+    background: #f1f5f9 !important;
+  }
+
+  .completionReport .reportSigBlock {
+    border-color: #cbd5e1 !important;
+    background: #fff !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .completionReport .reportSigGrid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .completionReport .reportSigLabel {
+    color: #475569 !important;
+  }
+
+  .completionReport   .reportSigImg {
+    max-width: 100%;
+    width: auto;
+    max-height: 140px;
+    height: auto;
+    object-fit: contain;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    image-rendering: auto;
+  }
+}
+
+.detailsCardHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.detailsPrintActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+a.secondary {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.jobPrintRoot {
+  display: none;
+}
+
+@media print {
+  :global(body.iiw-print-job-record) .page > *:not(:global(.job-print-root)) {
+    display: none !important;
+  }
+
+  :global(body.iiw-print-job-record) :global(.job-print-root) {
+    display: block !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  :global(body.iiw-print-job-record) .page {
+    max-width: none;
+    padding: 0;
+    background: #fff !important;
+  }
+
+  :global(body.iiw-print-job-record) :global(.job-print-root) :global([data-job-tailwind-form]) {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    box-shadow: none !important;
+  }
+}

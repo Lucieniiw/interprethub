@@ -1,0 +1,383 @@
+.page {
+  max-width: 1100px;
+}
+
+.header {
+  margin-bottom: 1.75rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.65rem;
+  font-weight: 700;
+}
+
+.lead {
+  margin: 0.35rem 0 0;
+  color: var(--iiw-text-lead);
+  font-size: 0.95rem;
+}
+
+.printBtn {
+  padding: 0.55rem 1.1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--iiw-border);
+  background: var(--iiw-surface-panel);
+  color: var(--iiw-text-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.printBtn:hover {
+  border-color: var(--iiw-blue);
+  color: var(--iiw-blue);
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.filterBtn,
+.filterActive {
+  padding: 0.4rem 0.85rem;
+  border-radius: 0.45rem;
+  border: 1px solid var(--iiw-border);
+  background: transparent;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--iiw-text-lead);
+}
+
+.filterActive {
+  background: var(--iiw-blue);
+  border-color: var(--iiw-blue);
+  color: #fff;
+}
+
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.65rem;
+  border: 1px solid var(--iiw-surface-panel-border);
+  background: var(--iiw-accent-soft);
+}
+
+.summaryItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.summaryLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--iiw-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.summaryValue {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--iiw-text-primary);
+}
+
+.banner {
+  color: var(--iiw-error-text);
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+
+.card {
+  border-radius: 1rem;
+  border: 1px solid var(--iiw-surface-panel-border);
+  background: var(--iiw-surface-panel);
+  overflow: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.table th,
+.table td {
+  padding: 0.65rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--iiw-divider-soft);
+}
+
+.table th {
+  color: var(--iiw-text-lead);
+  font-weight: 600;
+}
+
+.clickRow {
+  cursor: pointer;
+}
+
+.clickRow:hover {
+  background: var(--iiw-accent-soft);
+}
+
+.clickRow:focus-visible {
+  outline: 2px solid var(--iiw-blue);
+  outline-offset: -2px;
+}
+
+.empty {
+  color: var(--iiw-text-subtle);
+}
+
+.loader {
+  display: grid;
+  place-items: center;
+  min-height: 240px;
+}
+
+.error {
+  color: var(--iiw-error-text);
+}
+
+.payBtn {
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.45rem;
+  border: 1px solid rgba(0, 102, 162, 0.45);
+  background: rgba(0, 102, 162, 0.12);
+  color: var(--iiw-blue);
+  font-size: 0.8rem;
+}
+
+.payBtn:hover {
+  background: rgba(0, 102, 162, 0.2);
+}
+
+.screenOnly {
+}
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(15, 23, 42, 0.45);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.modal {
+  width: min(480px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  border-radius: 1rem;
+  border: 1px solid var(--iiw-surface-panel-border);
+  background: var(--iiw-surface-panel);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+}
+
+.modalHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid var(--iiw-divider-soft);
+}
+
+.modalTitle {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.modalClose {
+  border: none;
+  background: transparent;
+  color: var(--iiw-blue);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.modalBody {
+  padding: 1rem 1.1rem 1.25rem;
+}
+
+.modalMeta {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  color: var(--iiw-text-lead);
+}
+
+.breakdown {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.breakdown th,
+.breakdown td {
+  padding: 0.45rem 0.35rem;
+  text-align: left;
+  border-bottom: 1px solid var(--iiw-divider-soft);
+}
+
+.breakdown th {
+  color: var(--iiw-text-muted);
+  font-weight: 600;
+  width: 42%;
+}
+
+.breakdownTotal th,
+.breakdownTotal td {
+  font-weight: 700;
+  border-bottom: 2px solid var(--iiw-border);
+}
+
+.modalFoot {
+  margin: 1rem 0 0;
+  font-size: 0.8rem;
+  color: var(--iiw-text-muted);
+}
+
+.printRoot {
+  display: none;
+}
+
+.printInner {
+  padding: 0.5rem 0 0;
+}
+
+.printBrand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #0c4a6e;
+}
+
+.printLogo {
+  object-fit: contain;
+}
+
+.printCompany {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0c4a6e;
+  letter-spacing: -0.02em;
+}
+
+.printTagline {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 0.15rem;
+}
+
+.printH1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.printPeriod {
+  margin: 0 0 0.25rem;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.printSub {
+  margin: 0 0 1.25rem;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.printTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  margin-bottom: 1.25rem;
+}
+
+.printTable th,
+.printTable td {
+  border: 1px solid #cbd5e1;
+  padding: 0.45rem 0.55rem;
+  text-align: left;
+}
+
+.printTable th {
+  background: #f1f5f9;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.printTotals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #cbd5e1;
+}
+
+@media print {
+  .screenOnly {
+    display: none !important;
+  }
+
+  /* Hide on-screen list/summary; only the dedicated print block appears */
+  .page > *:not(.printRoot) {
+    display: none !important;
+  }
+
+  .printRoot {
+    display: block !important;
+    position: static !important;
+    visibility: visible !important;
+    break-inside: avoid;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    background: #fff !important;
+    color: #0f172a !important;
+    padding: 0;
+  }
+
+  .printCompany,
+  .printH1 {
+    color: #0c4a6e !important;
+  }
+
+  .printTable th {
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+  }
+
+  .printTable td {
+    color: #0f172a !important;
+  }
+
+  .page {
+    max-width: none;
+    background: #fff !important;
+  }
+
+  @page {
+    margin: 12mm;
+  }
+}

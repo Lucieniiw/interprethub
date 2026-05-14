@@ -1,0 +1,468 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  SUPER_ADMIN
+  ADMIN
+  INTERPRETER
+}
+
+enum InterpreterStatus {
+  ACTIVE
+  INACTIVE
+  VACATION
+  SICK_LEAVE
+}
+
+enum ServiceCategory {
+  INTERPRETATION
+  TRANSLATION
+}
+
+enum ServiceType {
+  IN_PERSON
+  VIRTUAL
+  PHONE
+}
+
+/// Legacy combined workflow + billing flag (kept for migration compatibility; prefer operationalStatus + billingStatus).
+enum JobStatus {
+  OPEN
+  ASSIGNED
+  COMPLETED
+  CANCELLED
+  PAID
+}
+
+/// Dispatch / session lifecycle (operational).
+enum JobOperationalStatus {
+  OPEN
+  OFFERED
+  ASSIGNED
+  IN_PROGRESS
+  UNDER_REVIEW
+  COMPLETED
+  CANCELLED
+}
+
+/// QuickBooks / invoice lifecycle (financial).
+enum JobBillingStatus {
+  UNBILLED
+  EXPORTED
+  PAID
+}
+
+enum JobOfferMode {
+  BROADCAST
+  SEQUENTIAL
+  DIRECT
+}
+
+enum JobOfferStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  EXPIRED
+  REVOKED
+}
+
+enum JobAssignmentRole {
+  PRIMARY
+  BACKUP
+  RELAY
+}
+
+enum JobAssignmentState {
+  INVITED
+  CONFIRMED
+  RELEASED
+}
+
+enum JobReviewDecision {
+  APPROVED
+  DISPUTED
+}
+
+enum ExportBatchStatus {
+  DRAFT
+  COMMITTED
+  FAILED
+}
+
+enum RecipientType {
+  STUDENT
+  PATIENT
+}
+
+enum CompletionStatus {
+  NONE
+  PENDING_REVIEW
+  APPROVED
+  DISPUTED
+}
+
+enum InterpreterSessionOutcome {
+  COMPLETED_SESSION
+  LATE_CANCELLATION
+}
+
+enum EarningStatus {
+  PENDING
+  PAID
+}
+
+model User {
+  id                  Int                 @id @default(autoincrement())
+  name                String
+  email               String              @unique
+  passwordHash        String              @map("password_hash")
+  role                UserRole
+  languages           String[]            @default([])
+  phone               String?
+  address             String?
+  emergencyContact    String?             @map("emergency_contact")
+  profilePhoto        String?             @map("profile_photo")
+  interpreterStatus   InterpreterStatus?  @default(ACTIVE) @map("interpreter_status")
+  accountLocked       Boolean             @default(false) @map("account_locked")
+  /// Wrong-password attempts for INTERPRETER accounts; reset on success or admin unlock.
+  failedLoginAttempts Int                 @default(0) @map("failed_login_attempts")
+  residentialCounty   String?             @map("residential_county")
+  createdAt           DateTime            @default(now()) @map("created_at")
+  updatedAt           DateTime            @updatedAt @map("updated_at")
+
+  interpreterJobs     Job[]               @relation("InterpreterJobs")
+  jobDeclines         JobDecline[]
+  jobEvents           JobEvent[]          @relation("JobEventActor")
+  jobOffers           JobOffer[]
+  jobAssignments      JobAssignment[]
+  submissionsAuthored JobSubmission[] @relation("SubmissionAuthor")
+  reviewsAuthored     JobReview[]     @relation("JobReviewReviewer")
+  exportBatches       ExportBatch[]
+  earnings            Earning[]
+  notifications       Notification[]
+  activities          Activity[]
+  busySlots           BusySlot[]
+  interpreterProfile  InterpreterProfile?
+
+  @@map("users")
+}
+
+model Client {
+  id             Int      @id @default(autoincrement())
+  name           String
+  email          String?
+  phone          String?
+  organization   String?
+  industry       String?
+  address        String?
+  /// USD amount per hour (invoice / reports)
+  rateInPerson   Float    @default(0) @map("rate_in_person")
+  /// USD amount per hour
+  ratePhone      Float    @default(0) @map("rate_phone")
+  /// USD amount per hour
+  rateVirtual    Float    @default(0) @map("rate_virtual")
+  /// USD amount per mile
+  rateMileage    Float    @default(0) @map("rate_mileage")
+  /// USD amount per hour (billable travel time)
+  rateTravelTime Float    @default(0) @map("rate_travel_time")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  jobs Job[]
+
+  @@map("clients")
+}
+
+model Job {
+  id                   Int               @id @default(autoincrement())
+  jobCode              String?           @unique @map("job_code")
+  clientId             Int?              @map("client_id")
+  serviceCategory      ServiceCategory   @default(INTERPRETATION) @map("service_category")
+  language             String
+  targetLanguage       String?           @map("target_language")
+  serviceType          ServiceType       @default(IN_PERSON) @map("service_type")
+  startTime            DateTime          @map("start_time")
+  endTime              DateTime          @map("end_time")
+  durationMinutes      Int?              @map("duration_minutes")
+  location             String?
+  requesterEmail       String?           @map("requester_email")
+  requesterName        String?           @map("requester_name")
+  recipientType        RecipientType?    @map("recipient_type")
+  recipientName        String?           @map("recipient_name")
+  interpretationType   String?           @map("interpretation_type")
+  translationDueDate   DateTime?         @map("translation_due_date")
+  translationClientName String?          @map("translation_client_name")
+  rushFee              Float?            @map("rush_fee")
+  attachmentUrl        String?           @map("attachment_url")
+  status               JobStatus         @default(OPEN)
+  operationalStatus    JobOperationalStatus @default(OPEN) @map("operational_status")
+  billingStatus        JobBillingStatus  @default(UNBILLED) @map("billing_status")
+  publishedAt          DateTime?         @map("published_at")
+  billingLockedAt      DateTime?         @map("billing_locked_at")
+  schedulingTimezone   String?           @map("scheduling_timezone")
+  interpreterId        Int?              @map("interpreter_id")
+  rate                 Float             @default(0)
+  notes                String?
+  patientName          String?           @map("patient_name")
+  staffName            String?           @map("staff_name")
+  staffSignature       String?           @map("staff_signature")
+  interpreterSignature String?           @map("interpreter_signature")
+  completionStatus     CompletionStatus  @default(NONE) @map("completion_status")
+  /// Coordinator explanation when disputing a linguist completion (shown to linguist).
+  completionDisputeNote String?          @map("completion_dispute_note")
+  completionNotes      String?           @map("completion_notes")
+  interpreterStartTime DateTime?         @map("interpreter_start_time")
+  interpreterEndTime   DateTime?         @map("interpreter_end_time")
+  interpreterMileage   Float?            @map("interpreter_mileage")
+  interpreterTravelTime Float?           @map("interpreter_travel_time")
+  interpreterTravelOutsideCounty Boolean? @map("interpreter_travel_outside_county")
+  interpreterNotes     String?           @map("interpreter_notes")
+  interpreterSessionOutcome InterpreterSessionOutcome? @map("interpreter_session_outcome")
+  paidAt               DateTime?         @map("paid_at")
+  createdAt            DateTime          @default(now()) @map("created_at")
+  updatedAt            DateTime          @updatedAt @map("updated_at")
+
+  client      Client?       @relation(fields: [clientId], references: [id])
+  interpreter User?         @relation("InterpreterJobs", fields: [interpreterId], references: [id])
+  declines    JobDecline[]
+  earnings    Earning[]
+  events      JobEvent[]
+  offers      JobOffer[]
+  assignments JobAssignment[]
+  submissions JobSubmission[]
+  exportLines ExportLineItem[]
+
+  @@index([interpreterId, startTime, endTime])
+  @@map("jobs")
+}
+
+model JobEvent {
+  id                       Int                   @id @default(autoincrement())
+  jobId                    Int                   @map("job_id")
+  eventType                String                @map("event_type")
+  payload                  Json                  @default("{}")
+  actorUserId              Int?                  @map("actor_user_id")
+  previousOperationalStatus JobOperationalStatus? @map("previous_operational_status")
+  newOperationalStatus     JobOperationalStatus? @map("new_operational_status")
+  previousBillingStatus    JobBillingStatus?     @map("previous_billing_status")
+  newBillingStatus         JobBillingStatus?     @map("new_billing_status")
+  correlationId            String?               @map("correlation_id")
+  createdAt                DateTime              @default(now()) @map("created_at")
+
+  job   Job   @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  actor User? @relation("JobEventActor", fields: [actorUserId], references: [id])
+
+  @@index([jobId, createdAt])
+  @@map("job_events")
+}
+
+model JobOffer {
+  id             Int            @id @default(autoincrement())
+  jobId          Int            @map("job_id")
+  interpreterId Int           @map("interpreter_id")
+  mode           JobOfferMode   @default(BROADCAST)
+  status         JobOfferStatus @default(PENDING)
+  sequence       Int            @default(0)
+  expiresAt      DateTime?    @map("expires_at")
+  respondedAt    DateTime?    @map("responded_at")
+  createdAt      DateTime     @default(now()) @map("created_at")
+
+  job          Job  @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  interpreter User @relation(fields: [interpreterId], references: [id], onDelete: Cascade)
+
+  @@index([jobId, status])
+  @@index([interpreterId, status])
+  @@map("job_offers")
+}
+
+model JobAssignment {
+  id             Int                 @id @default(autoincrement())
+  jobId          Int                 @map("job_id")
+  interpreterId Int                @map("interpreter_id")
+  role           JobAssignmentRole   @default(PRIMARY)
+  state          JobAssignmentState  @default(CONFIRMED)
+  plannedStartAt DateTime            @map("planned_start_at")
+  plannedEndAt   DateTime            @map("planned_end_at")
+  createdAt      DateTime            @default(now()) @map("created_at")
+  updatedAt      DateTime            @updatedAt @map("updated_at")
+
+  job          Job  @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  interpreter User @relation(fields: [interpreterId], references: [id], onDelete: Cascade)
+  submissions JobSubmission[]
+
+  @@index([interpreterId, plannedStartAt, plannedEndAt])
+  @@map("job_assignments")
+}
+
+model JobSubmission {
+  id             Int      @id @default(autoincrement())
+  jobId          Int      @map("job_id")
+  assignmentId   Int?     @map("assignment_id")
+  revision       Int
+  payload        Json     @default("{}")
+  submittedById  Int     @map("submitted_by_id")
+  submittedAt    DateTime @default(now()) @map("submitted_at")
+
+  job         Job             @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  assignment  JobAssignment?  @relation(fields: [assignmentId], references: [id], onDelete: SetNull)
+  submitter   User            @relation("SubmissionAuthor", fields: [submittedById], references: [id], onDelete: Cascade)
+  reviews     JobReview[]
+
+  @@unique([jobId, revision])
+  @@map("job_submissions")
+}
+
+model JobReview {
+  id           Int               @id @default(autoincrement())
+  submissionId Int             @map("submission_id")
+  decision     JobReviewDecision
+  reason       String?
+  reviewedById Int               @map("reviewed_by_id")
+  reviewedAt   DateTime        @default(now()) @map("reviewed_at")
+
+  submission JobSubmission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  reviewer   User          @relation("JobReviewReviewer", fields: [reviewedById], references: [id], onDelete: Cascade)
+
+  @@map("job_reviews")
+}
+
+model ExportBatch {
+  id          Int               @id @default(autoincrement())
+  createdById Int               @map("created_by_id")
+  status      ExportBatchStatus @default(DRAFT)
+  batchType   String            @default("QUICKBOOKS") @map("batch_type")
+  notes       String?
+  createdAt   DateTime          @default(now()) @map("created_at")
+  committedAt DateTime?       @map("committed_at")
+
+  creator User             @relation(fields: [createdById], references: [id], onDelete: Cascade)
+  lines   ExportLineItem[]
+
+  @@map("export_batches")
+}
+
+model ExportLineItem {
+  id                 Int       @id @default(autoincrement())
+  exportBatchId      Int       @map("export_batch_id")
+  jobId              Int       @map("job_id")
+  amount             Float
+  currency           String    @default("USD")
+  quickbooksInvoiceId String?  @map("quickbooks_invoice_id")
+  quickbooksBillId   String?   @map("quickbooks_bill_id")
+  createdAt          DateTime  @default(now()) @map("created_at")
+
+  batch ExportBatch @relation(fields: [exportBatchId], references: [id], onDelete: Cascade)
+  job   Job         @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@unique([exportBatchId, jobId])
+  @@map("export_line_items")
+}
+
+model JobDecline {
+  id             Int      @id @default(autoincrement())
+  jobId          Int      @map("job_id")
+  interpreterId  Int      @map("interpreter_id")
+  declinedAt     DateTime @default(now()) @map("declined_at")
+
+  job          Job @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  interpreter  User @relation(fields: [interpreterId], references: [id], onDelete: Cascade)
+
+  @@unique([jobId, interpreterId])
+  @@map("job_declines")
+}
+
+model InterpreterProfile {
+  id             Int      @id @default(autoincrement())
+  interpreterId  Int      @unique @map("interpreter_id")
+  rateInPerson   Float    @default(0) @map("rate_in_person")
+  rateVirtual    Float    @default(0) @map("rate_virtual")
+  ratePhone      Float    @default(0) @map("rate_phone")
+  /// USD per mile (linguist pay — separate from client billing)
+  rateMileage    Float    @default(0) @map("rate_mileage")
+  /// USD per hour for billable travel time
+  rateTravelTime Float    @default(0) @map("rate_travel_time")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  interpreter User @relation(fields: [interpreterId], references: [id], onDelete: Cascade)
+
+  @@map("interpreter_profiles")
+}
+
+model Earning {
+  id              Int           @id @default(autoincrement())
+  interpreterId   Int           @map("interpreter_id")
+  jobId           Int           @map("job_id")
+  amount          Float
+  hours           Float?
+  mileageAmount   Float?        @map("mileage_amount")
+  travelAmount    Float?        @map("travel_amount")
+  status          EarningStatus @default(PENDING)
+  notes           String?
+  paidAt          DateTime?     @map("paid_at")
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+
+  interpreter User @relation(fields: [interpreterId], references: [id], onDelete: Cascade)
+  job         Job @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@map("earnings")
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  type      String
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
+
+model Activity {
+  id        Int      @id @default(autoincrement())
+  type      String
+  message   String
+  jobId     Int?     @map("job_id")
+  userId    Int?     @map("user_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@map("activity")
+}
+
+model BusySlot {
+  id              Int      @id @default(autoincrement())
+  interpreterId   Int      @map("interpreter_id")
+  startTime       DateTime @map("start_time")
+  endTime         DateTime @map("end_time")
+  reason          String?
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  interpreter User @relation(fields: [interpreterId], references: [id], onDelete: Cascade)
+
+  @@map("busy_slots")
+}
+
+model SystemSettings {
+  id                       Int      @id @default(autoincrement())
+  cancellationPolicyHours  Int      @default(24) @map("cancellation_policy_hours")
+  availableLanguages       String[] @default([]) @map("available_languages")
+  notificationRules        String?  @default("{}") @map("notification_rules")
+  /// Comma-separated pay days for linguist payouts: day-of-month 1–31 and/or LAST (e.g. `15,LAST`).
+  linguistPaydays          String   @default("15,LAST") @map("linguist_paydays")
+  updatedAt                DateTime @updatedAt @map("updated_at")
+
+  @@map("system_settings")
+}
