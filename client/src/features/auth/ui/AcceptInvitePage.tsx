@@ -32,7 +32,7 @@ export function AcceptInvitePage() {
     setPreviewLoading(true);
     setPreviewError(null);
     api
-      .get<Preview>("/api/auth/invite-preview", { params: { token } })
+      .get<Preview>("/auth/invite-preview", { params: { token } })
       .then((r) => {
         if (!cancelled) setPreview(r.data);
       })
@@ -67,7 +67,7 @@ export function AcceptInvitePage() {
     }
     setBusy(true);
     try {
-      const { data } = await api.post<{ token: string; user: AuthUser }>("/api/auth/accept-invite", parsed.data);
+      const { data } = await api.post<{ token: string; user: AuthUser }>("/auth/accept-invite", parsed.data);
       if (!data?.token || !data?.user) {
         setError("Unexpected response. Try again.");
         return;

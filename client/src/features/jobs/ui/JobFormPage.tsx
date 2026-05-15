@@ -20,7 +20,7 @@ export function JobFormPage() {
     let cancelled = false;
     (async () => {
       try {
-        const { data } = await api.get<JobFormPrintJob>(`/api/jobs/${id}`);
+        const { data } = await api.get<JobFormPrintJob>(`/jobs/${id}`);
         if (!cancelled) {
           setJob(data);
           setError("");

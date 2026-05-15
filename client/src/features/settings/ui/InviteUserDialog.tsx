@@ -86,7 +86,7 @@ export function InviteUserDialog({
       const { data } = await api.post<{
         emailSent: boolean;
         inviteLink?: string;
-      }>("/api/auth/invite-user", {
+      }>("/auth/invite-user", {
         name: name.trim(),
         email: email.trim().toLowerCase(),
         role,

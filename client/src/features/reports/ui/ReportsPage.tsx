@@ -77,7 +77,7 @@ export function ReportsPage() {
     setStatsLoading(true);
     setStatsError(null);
     api
-      .get("/api/dashboard/stats")
+      .get("/dashboard/stats")
       .then((r) => setStats(normalizeStats(r.data)))
       .catch(() => setStatsError("Could not load report data."))
       .finally(() => setStatsLoading(false));
@@ -104,7 +104,7 @@ export function ReportsPage() {
         jobs: ReportExportJob[];
         truncated?: boolean;
         pendingReviewUnpaidCount?: number;
-      }>("/api/reports/jobs-for-export", { params: { startTimeMin: startIso, startTimeMax: endIso } });
+      }>("/reports/jobs-for-export", { params: { startTimeMin: startIso, startTimeMax: endIso } });
 
       const jobs = data.jobs ?? [];
       const pending = data.pendingReviewUnpaidCount ?? 0;

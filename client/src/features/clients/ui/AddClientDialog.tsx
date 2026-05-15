@@ -64,7 +64,7 @@ export function AddClientDialog({
     setSaving(true);
     setError(null);
     try {
-      await api.post("/api/clients", {
+      await api.post("/clients", {
         name: name.trim(),
         organization: organization.trim() || null,
         industry: industry.trim() || null,

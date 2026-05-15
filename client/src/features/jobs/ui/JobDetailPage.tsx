@@ -643,7 +643,7 @@ export function JobDetailPage() {
     if (Number.isNaN(id)) return;
     setLoading(true);
     try {
-      const { data } = await api.get<JobDetail>(`/api/jobs/${id}`);
+      const { data } = await api.get<JobDetail>(`/jobs/${id}`);
       setJob(data);
       setStaffFormKey((k) => k + 1);
       setInterpPatch({
@@ -748,7 +748,7 @@ export function JobDetailPage() {
         notes: (p.notes as string | undefined) ?? job.notes,
       };
 
-      await api.patch(`/api/jobs/${id}`, body);
+      await api.patch(`/jobs/${id}`, body);
       await load();
       setStaffPatch({});
     } catch (err) {
@@ -767,7 +767,7 @@ export function JobDetailPage() {
     if (!job) return;
     setError(null);
     try {
-      await api.patch(`/api/jobs/${id}`, { status: "PAID" });
+      await api.patch(`/jobs/${id}`, { status: "PAID" });
       await load();
     } catch (err) {
       if (isAxiosError(err) && err.response?.status === 409) {
@@ -891,7 +891,7 @@ export function JobDetailPage() {
         }
       }
 
-      await api.post(`/api/jobs/${id}/complete`, body);
+      await api.post(`/jobs/${id}/complete`, body);
       await load();
     } catch (err) {
       if (
@@ -920,7 +920,7 @@ export function JobDetailPage() {
               completionDisputeNote: completionDisputeDraft.trim() || null,
             }
           : { completionStatus: next };
-      await api.patch(`/api/jobs/${id}`, body);
+      await api.patch(`/jobs/${id}`, body);
       await load();
     } catch (err) {
       if (isAxiosError(err) && err.response?.status === 409) {

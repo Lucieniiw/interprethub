@@ -69,7 +69,7 @@ export function TeamPage() {
 
   useEffect(() => {
     api
-      .get<UserRow[]>("/api/users")
+      .get<UserRow[]>("/users")
       .then((r) => setRows(r.data.filter((u) => u.role === "INTERPRETER")))
       .catch(() => setError("Could not load linguists."))
       .finally(() => setLoading(false));

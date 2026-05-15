@@ -18,7 +18,7 @@ export function LinguistSettingsPage() {
 
   useEffect(() => {
     api
-      .get<Settings & { id: number }>("/api/settings")
+      .get<Settings & { id: number }>("/settings")
       .then((r) => {
         setPolicies({
           cancellationPolicyHours: r.data.cancellationPolicyHours,

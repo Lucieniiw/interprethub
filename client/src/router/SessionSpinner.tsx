@@ -1,7 +1,7 @@
 import { Oval } from "react-loader-spinner";
 import { IIW_BLUE, IIW_LOADER_SECONDARY } from "@/theme/iiw";
 
-/** Shown while `/api/auth/me` resolves so we never treat “user still loading” as “logged out”. */
+/** Shown while `/auth/me` resolves so we never treat “user still loading” as “logged out”. */
 export function SessionSpinner() {
   return (
     <div

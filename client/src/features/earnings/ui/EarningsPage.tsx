@@ -75,7 +75,7 @@ export function EarningsPage() {
     setError(null);
     const q = range === "all" ? "" : `?range=${encodeURIComponent(range)}`;
     api
-      .get<EarningRow[]>(`/api/earnings${q}`)
+      .get<EarningRow[]>(`/earnings${q}`)
       .then((r) => setRows(r.data))
       .catch(() => setError("Could not load earnings."))
       .finally(() => setLoading(false));
@@ -87,14 +87,14 @@ export function EarningsPage() {
 
   useEffect(() => {
     api
-      .get<{ linguistPaydays?: string }>("/api/settings")
+      .get<{ linguistPaydays?: string }>("/settings")
       .then((r) => setPaySchedule(r.data.linguistPaydays?.trim() || "15,LAST"))
       .catch(() => {});
   }, []);
 
   async function markPaid(earningId: number) {
     try {
-      await api.patch(`/api/earnings/${earningId}`, {
+      await api.patch(`/earnings/${earningId}`, {
         status: "PAID",
         paidAt: new Date().toISOString(),
       });
@@ -108,7 +108,7 @@ export function EarningsPage() {
     setDetailLoading(true);
     setDetail(null);
     try {
-      const { data } = await api.get<EarningDetail>(`/api/earnings/${id}`);
+      const { data } = await api.get<EarningDetail>(`/earnings/${id}`);
       setDetail(data);
     } catch {
       setError("Could not load earning details.");

@@ -87,14 +87,14 @@ export function CreateJobPage() {
 
   useEffect(() => {
     api
-      .get<Client[]>("/api/clients")
+      .get<Client[]>("/clients")
       .then((r) => setClients(r.data))
       .catch(() => {});
   }, []);
 
   useEffect(() => {
     api
-      .get<UserRow[]>("/api/users")
+      .get<UserRow[]>("/users")
       .then((r) => {
         setLinguists(
           r.data
@@ -182,9 +182,9 @@ export function CreateJobPage() {
         const fd = new FormData();
         fd.append("payload", JSON.stringify(payload));
         fd.append("attachment", attachmentFile);
-        await api.post("/api/jobs", fd, { timeout: 120_000 });
+        await api.post("/jobs", fd, { timeout: 120_000 });
       } else {
-        await api.post("/api/jobs", payload);
+        await api.post("/jobs", payload);
       }
       navigate("/assignments", { replace: true });
     } catch (err: unknown) {

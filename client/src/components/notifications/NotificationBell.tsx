@@ -18,13 +18,13 @@ export function NotificationBell() {
 
   async function refresh() {
     try {
-      const { data: list } = await api.get<N[]>("/api/notifications");
+      const { data: list } = await api.get<N[]>("/notifications");
       setItems(list);
     } catch {
       /* ignore */
     }
     try {
-      const { data: c } = await api.get<{ count: number }>("/api/notifications/unread-count");
+      const { data: c } = await api.get<{ count: number }>("/notifications/unread-count");
       setCount(typeof c?.count === "number" ? c.count : 0);
     } catch {
       setCount(0);
@@ -46,12 +46,12 @@ export function NotificationBell() {
   }, []);
 
   async function onReadOne(id: number) {
-    await api.patch(`/api/notifications/${id}/read`);
+    await api.patch(`/notifications/${id}/read`);
     void refresh();
   }
 
   async function onReadAll() {
-    await api.post("/api/notifications/read-all");
+    await api.post("/notifications/read-all");
     void refresh();
     setOpen(false);
   }

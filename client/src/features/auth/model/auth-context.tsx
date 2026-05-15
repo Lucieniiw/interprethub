@@ -26,7 +26,7 @@ type AuthContextValue = {
   user: AuthUser | null;
   setUser: (user: AuthUser | null) => void;
   refreshUser: () => Promise<void>;
-  /** True once initial / missing token or first `/api/auth/me` after token has finished */
+  /** True once initial / missing token or first `/auth/me` after token has finished */
   sessionReady: boolean;
 };
 
@@ -49,7 +49,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return;
     }
     try {
-      const { data } = await api.get<AuthUser>("/api/auth/me");
+      const { data } = await api.get<AuthUser>("/auth/me");
       setUser(data);
     } catch (e) {
       setUser(null);

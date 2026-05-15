@@ -157,7 +157,7 @@ export function ViewLinguistDialog({
     setError(null);
     setDetail(null);
     api
-      .get<LinguistDetail>(`/api/users/${linguistId}`)
+      .get<LinguistDetail>(`/users/${linguistId}`)
       .then((r) => {
         if (!cancelled) setDetail(r.data);
       })

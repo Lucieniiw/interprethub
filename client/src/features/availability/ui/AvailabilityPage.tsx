@@ -41,7 +41,7 @@ export function AvailabilityPage() {
   function load() {
     setLoading(true);
     api
-      .get<BusySlot[]>("/api/busy-slots")
+      .get<BusySlot[]>("/busy-slots")
       .then((r) => setRows(r.data))
       .catch(() => setError("Could not load availability blocks."))
       .finally(() => setLoading(false));
@@ -59,7 +59,7 @@ export function AvailabilityPage() {
     try {
       const startIso = new Date(start).toISOString();
       const endIso = new Date(end).toISOString();
-      await api.post("/api/busy-slots", {
+      await api.post("/busy-slots", {
         startTime: startIso,
         endTime: endIso,
         reason: reason.trim() || null,
@@ -77,7 +77,7 @@ export function AvailabilityPage() {
 
   async function remove(id: number) {
     try {
-      await api.delete(`/api/busy-slots/${id}`);
+      await api.delete(`/busy-slots/${id}`);
       load();
     } catch {
       setError("Could not remove block.");

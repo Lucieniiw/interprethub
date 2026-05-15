@@ -69,8 +69,8 @@ export function MySchedulePage() {
 
   const reloadAll = useCallback(() => {
     return Promise.all([
-      api.get<JobRow[]>("/api/jobs").then((r) => r.data),
-      api.get<BusySlotRow[]>("/api/busy-slots").then((r) => r.data),
+      api.get<JobRow[]>("/jobs").then((r) => r.data),
+      api.get<BusySlotRow[]>("/busy-slots").then((r) => r.data),
     ]).then(([jobData, busyData]) => {
       setJobs(jobData);
       setBusySlots(busyData);
@@ -161,7 +161,7 @@ export function MySchedulePage() {
     setBusyFormError(null);
     try {
       const reason = presetToReason(busyPreset, busyOther);
-      await api.post("/api/busy-slots", {
+      await api.post("/busy-slots", {
         startTime: new Date(busyStart).toISOString(),
         endTime: new Date(busyEnd).toISOString(),
         reason,
@@ -181,7 +181,7 @@ export function MySchedulePage() {
   async function removeBusySlot(id: number) {
     setError(null);
     try {
-      await api.delete(`/api/busy-slots/${id}`);
+      await api.delete(`/busy-slots/${id}`);
       await reloadAll();
     } catch (err) {
       setError(getApiErrorMessage(err, "Could not remove that block."));

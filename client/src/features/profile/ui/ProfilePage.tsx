@@ -94,7 +94,7 @@ export function ProfilePage({
 
   useEffect(() => {
     api
-      .get<Profile>("/api/profile")
+      .get<Profile>("/profile")
       .then((r) => {
         const p = r.data;
         setProfile(p);
@@ -138,7 +138,7 @@ export function ProfilePage({
     try {
       const fd = new FormData();
       fd.append("photo", pendingFile);
-      const { data } = await api.post<Profile>("/api/profile/photo", fd);
+      const { data } = await api.post<Profile>("/profile/photo", fd);
       setProfile(data);
       setPendingPreviewUrl((prev) => {
         if (prev) URL.revokeObjectURL(prev);
@@ -168,7 +168,7 @@ export function ProfilePage({
     setPhotoUploading(true);
     setError(null);
     try {
-      const { data } = await api.delete<Profile>("/api/profile/photo");
+      const { data } = await api.delete<Profile>("/profile/photo");
       setProfile(data);
       await refreshUser();
     } catch {
@@ -202,8 +202,8 @@ export function ProfilePage({
           }
         : base;
 
-      await api.patch("/api/profile", payload);
-      const { data } = await api.get<Profile>("/api/profile");
+      await api.patch("/profile", payload);
+      const { data } = await api.get<Profile>("/profile");
       setProfile(data);
       await refreshUser();
     } catch {

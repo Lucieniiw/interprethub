@@ -54,7 +54,7 @@ export function SettingsPage() {
 
   useEffect(() => {
     api
-      .get<OrgSettings>("/api/settings")
+      .get<OrgSettings>("/settings")
       .then((r) => {
         setRow(r.data);
         setHours(r.data.cancellationPolicyHours);
@@ -77,7 +77,7 @@ export function SettingsPage() {
         .split(",")
         .map((s) => s.trim())
         .filter(Boolean);
-      const { data } = await api.patch<OrgSettings>("/api/settings", {
+      const { data } = await api.patch<OrgSettings>("/settings", {
         cancellationPolicyHours: hours,
         availableLanguages,
         linguistPaydays: paydays.trim() || "15,LAST",
@@ -96,7 +96,7 @@ export function SettingsPage() {
     setErrorRules(null);
     try {
       const payload = serializeWorkspaceNotificationPreferences(notifPrefs).trim();
-      const { data } = await api.patch<OrgSettings>("/api/settings", {
+      const { data } = await api.patch<OrgSettings>("/settings", {
         notificationRules: payload || null,
       });
       setRow(data);

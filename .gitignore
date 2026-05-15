@@ -1,9 +1,17 @@
 node_modules
 dist
 /generated/prisma
+
 .env
 .env.local
 .env.bootstrap.local
+client/.env.production
+
 *.log
 .DS_Store
+
 /uploads
+client/dist
+client/node_modules
+*.tsbuildinfo
+ecosystem.config.cjs

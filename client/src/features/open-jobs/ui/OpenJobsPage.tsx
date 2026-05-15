@@ -16,7 +16,7 @@ export function OpenJobsPage() {
   function load() {
     setLoading(true);
     api
-      .get<ExportableAssignment[]>("/api/jobs")
+      .get<ExportableAssignment[]>("/jobs")
       .then((r) => setJobs(r.data))
       .catch((err) => setError(getApiErrorMessage(err, "Could not load open jobs.")))
       .finally(() => setLoading(false));
@@ -32,7 +32,7 @@ export function OpenJobsPage() {
     setActionId(id);
     setError(null);
     try {
-      await api.post(`/api/jobs/${id}/claim`);
+      await api.post(`/jobs/${id}/claim`);
       load();
     } catch {
       setError("Could not claim this job.");
@@ -45,7 +45,7 @@ export function OpenJobsPage() {
     setActionId(id);
     setError(null);
     try {
-      await api.post(`/api/jobs/${id}/decline`);
+      await api.post(`/jobs/${id}/decline`);
       load();
     } catch {
       setError("Could not decline this job.");

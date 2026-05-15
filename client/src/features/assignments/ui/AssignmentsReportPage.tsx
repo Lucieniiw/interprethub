@@ -44,7 +44,7 @@ export function AssignmentsReportPage() {
     setLoading(true);
     setError(null);
     api
-      .get<AssignmentReportJob[]>("/api/jobs")
+      .get<AssignmentReportJob[]>("/jobs")
       .then((r) => {
         setJobs(r.data);
         setFilterSummary("All assignments (open this report from Assignments with “Print report” to match your filters)");

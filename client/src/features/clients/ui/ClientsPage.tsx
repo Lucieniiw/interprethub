@@ -83,7 +83,7 @@ export function ClientsPage() {
   function load() {
     setLoading(true);
     api
-      .get<ClientDetail[]>("/api/clients")
+      .get<ClientDetail[]>("/clients")
       .then((r) => setRows(r.data))
       .catch(() => setError("Could not load clients."))
       .finally(() => setLoading(false));
@@ -124,7 +124,7 @@ export function ClientsPage() {
     setSaving(true);
     setError(null);
     try {
-      await api.patch(`/api/clients/${editingId}`, {
+      await api.patch(`/clients/${editingId}`, {
         name: editForm.name.trim(),
         organization: editForm.organization.trim() || null,
         industry: editForm.industry.trim() || null,
@@ -150,7 +150,7 @@ export function ClientsPage() {
     if (!window.confirm("Delete this client? Jobs linked to this client must be reassigned first.")) return;
     setError(null);
     try {
-      await api.delete(`/api/clients/${id}`);
+      await api.delete(`/clients/${id}`);
       load();
     } catch {
       setError("Delete failed — client may still have assignments.");

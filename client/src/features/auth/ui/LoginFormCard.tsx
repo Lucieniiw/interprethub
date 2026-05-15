@@ -83,7 +83,7 @@ export function LoginFormCard({
     }
     setBusy(true);
     try {
-      const { data } = await api.post<{ token: string; user: AuthUser }>("/api/auth/login", parsed.data);
+      const { data } = await api.post<{ token: string; user: AuthUser }>("/auth/login", parsed.data);
 
       if (!data?.token || !data?.user) {
         setError("Unexpected response from server. Try again.");

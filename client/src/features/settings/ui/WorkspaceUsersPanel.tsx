@@ -145,7 +145,7 @@ export function WorkspaceUsersPanel() {
     setLoading(true);
     setError(null);
     try {
-      const r = await api.get<UserRow[]>("/api/users");
+      const r = await api.get<UserRow[]>("/users");
       setRows(r.data);
     } catch {
       setError("Could not load users.");
@@ -156,7 +156,7 @@ export function WorkspaceUsersPanel() {
 
   const refreshUsers = useCallback(async () => {
     try {
-      const r = await api.get<UserRow[]>("/api/users");
+      const r = await api.get<UserRow[]>("/users");
       setRows(r.data);
       setError(null);
     } catch {
@@ -173,7 +173,7 @@ export function WorkspaceUsersPanel() {
     setResendLink(null);
     try {
       const { data } = await api.post<{ emailSent: boolean; resetLink?: string }>(
-        `/api/users/${u.id}/password-reset`,
+        `/users/${u.id}/password-reset`,
       );
       if (data.emailSent) {
         setResendFlash(`Password reset email sent to ${u.email}.`);

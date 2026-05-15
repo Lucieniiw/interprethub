@@ -109,7 +109,7 @@ export function EditUserDialog({
           rateMileage: number;
           rateTravelTime: number;
         } | null;
-      }>(`/api/users/${user.id}`)
+      }>(`/users/${user.id}`)
       .then((r) => {
         if (cancelled) return;
         const p = r.data.interpreterProfile;
@@ -175,7 +175,7 @@ export function EditUserDialog({
 
     setSaving(true);
     try {
-      await api.patch(`/api/users/${user.id}`, payload);
+      await api.patch(`/users/${user.id}`, payload);
       onSaved();
       onDialogClose();
     } catch (err) {

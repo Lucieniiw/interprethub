@@ -41,7 +41,7 @@ export function DeleteUserConfirmDialog({
     setBusy(true);
     setError(null);
     try {
-      await api.delete(`/api/users/${user.id}`);
+      await api.delete(`/users/${user.id}`);
       onDeleted();
       closeDialog();
     } catch (err) {

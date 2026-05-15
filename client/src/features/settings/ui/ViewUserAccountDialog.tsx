@@ -96,7 +96,7 @@ export function ViewUserAccountDialog({
     setUnlocking(true);
     setError(null);
     try {
-      await api.post(`/api/users/${user.id}/unlock`);
+      await api.post(`/users/${user.id}/unlock`);
       onUserUpdated();
       closeDialog();
     } catch (err) {
@@ -111,7 +111,7 @@ export function ViewUserAccountDialog({
     setLocking(true);
     setError(null);
     try {
-      await api.post(`/api/users/${user.id}/lock`);
+      await api.post(`/users/${user.id}/lock`);
       onUserUpdated();
       closeDialog();
     } catch (err) {
@@ -128,7 +128,7 @@ export function ViewUserAccountDialog({
     setWarn(null);
     try {
       const { data } = await api.post<{ emailSent: boolean; resetLink?: string }>(
-        `/api/users/${user.id}/password-reset`,
+        `/users/${user.id}/password-reset`,
       );
       if (data.emailSent) {
         setResetOk({ kind: "email" });

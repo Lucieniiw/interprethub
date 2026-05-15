@@ -19,7 +19,7 @@ export function ActivityPage() {
 
   useEffect(() => {
     api
-      .get<Row[]>("/api/activity")
+      .get<Row[]>("/activity")
       .then((r) => setRows(r.data))
       .catch(() => setError("Could not load activity."))
       .finally(() => setLoading(false));

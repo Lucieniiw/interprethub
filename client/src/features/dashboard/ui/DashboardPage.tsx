@@ -101,7 +101,7 @@ export function DashboardPage() {
 
   useEffect(() => {
     api
-      .get("/api/dashboard/overview")
+      .get("/dashboard/overview")
       .then((r) => {
         const parsed = parseOverview(r.data);
         if (!parsed) {
